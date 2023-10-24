@@ -7,7 +7,8 @@ Project created for the CISC 813 class of Prof. Christian Muise, in Fall '23 at 
 
 This project aims to model an automated planner capable of outlining a set of movements for the joints of a 6 Degrees of Freedom (DoF) MyCobot robotic arm so that, given an initial state of the robot, it can get an actuator to a specified position in 3D space without hitting an obstacle.
 
-![MyCobot six degrees of freedom robotic arm](https://shop.elephantrobotics.com/cdn/shop/products/myCobot280Pi_d059bf49-0c40-402b-ae52-3617c81d2cc7_1000x.png?v=1676893070)
+
+<a href="https://shop.elephantrobotics.com/en-ca/products/mycobot-pi-worlds-smallest-and-lightest-six-axis-collaborative-robot"><img src="https://shop.elephantrobotics.com/cdn/shop/products/myCobot280Pi_d059bf49-0c40-402b-ae52-3617c81d2cc7_1000x.png?v=1676893070" align="center" width="300" ></a>
 MyCobot six degrees of freedom robotic arm
 
 Since the robotic arm mentioned is used for surgical navigation, the actual application scenario would be in such context, with the actuator being a needle, the target, a location in the patient's head, and the obstacle, the patient's head itself.
