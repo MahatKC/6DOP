@@ -1,0 +1,1 @@
+java -jar enhsp-20.jar -o 6dop_d.pddl -f 6dop_p.pddl
