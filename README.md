@@ -10,7 +10,7 @@ Project created for the CISC 813 class of Prof. Christian Muise, in Fall '23 at 
 </p>
 
 <i align="center">
-  _MyCobot six degrees of freedom robotic arm_
+  MyCobot six degrees of freedom robotic arm
 </i>
 
 This project aims to model an automated planner capable of outlining a set of movements for the joints of a 6 Degrees of Freedom (DoF) MyCobot robotic arm so that, given an initial state of the robot, it can get an actuator to a specified position in 3D space without hitting an obstacle.
