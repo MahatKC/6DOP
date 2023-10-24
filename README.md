@@ -5,16 +5,17 @@ Project created for the CISC 813 class of Prof. Christian Muise, in Fall '23 at 
 
 ---
 
-This project aims to model an automated planner capable of outlining a set of movements for the joints of a 6 Degrees of Freedom (DoF) MyCobot robotic arm so that, given an initial state of the robot, it can get an actuator to a specified position in 3D space without hitting an obstacle.
-
-
 <a href="https://shop.elephantrobotics.com/en-ca/products/mycobot-pi-worlds-smallest-and-lightest-six-axis-collaborative-robot"><img src="https://shop.elephantrobotics.com/cdn/shop/products/myCobot280Pi_d059bf49-0c40-402b-ae52-3617c81d2cc7_1000x.png?v=1676893070" align="middle" width="500" ></a>
 
-<small>MyCobot six degrees of freedom robotic arm</small>
+_MyCobot six degrees of freedom robotic arm_
+
+This project aims to model an automated planner capable of outlining a set of movements for the joints of a 6 Degrees of Freedom (DoF) MyCobot robotic arm so that, given an initial state of the robot, it can get an actuator to a specified position in 3D space without hitting an obstacle.
 
 Since the robotic arm mentioned is used for surgical navigation, the actual application scenario would be in such context, with the actuator being a needle, the target, a location in the patient's head, and the obstacle, the patient's head itself.
 
 For that matter, this project falls within the Hybrid domain of planning, using Numeric variables and durative actions. Thus, the planner used is ENHSP (https://sites.google.com/view/enhsp/home), created by Enrico Scala et al.
+
+---
 
 ### Roadmap
 
