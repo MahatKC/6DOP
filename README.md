@@ -10,7 +10,7 @@ This project aims to model an automated planner capable of outlining a set of mo
 
 <a href="https://shop.elephantrobotics.com/en-ca/products/mycobot-pi-worlds-smallest-and-lightest-six-axis-collaborative-robot"><img src="https://shop.elephantrobotics.com/cdn/shop/products/myCobot280Pi_d059bf49-0c40-402b-ae52-3617c81d2cc7_1000x.png?v=1676893070" align="middle" width="500" ></a>
 
-MyCobot six degrees of freedom robotic arm
+<small>MyCobot six degrees of freedom robotic arm</small>
 
 Since the robotic arm mentioned is used for surgical navigation, the actual application scenario would be in such context, with the actuator being a needle, the target, a location in the patient's head, and the obstacle, the patient's head itself.
 
