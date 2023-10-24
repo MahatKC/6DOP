@@ -1,5 +1,6 @@
 # 6DOP
 _Six Degrees of Planning: Automated Planning for Surgical Navigation Under MyCobot’s Six Degrees of Freedom_
+
 Project created for the CISC 813 class of Prof. Christian Muise, in Fall '23 at Queen's University - Canada
 
 ---
