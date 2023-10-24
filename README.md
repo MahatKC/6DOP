@@ -1,13 +1,16 @@
 # 6DOP
-Six Degrees of Planning: Automated Planning for Surgical Navigation Under MyCobot’s Six Degrees of Freedom
+_Six Degrees of Planning: Automated Planning for Surgical Navigation Under MyCobot’s Six Degrees of Freedom_
+Project created for the CISC 813 class of Prof. Christian Muise, in Fall '23 at Queen's University - Canada
 
-Project created for the CISC 813 class of Prof. Christian Muise, in Fall '23 at Queen's University - Canada.
+---
 
 This project aims to model an automated planner capable of outlining a set of movements for the joints of a 6 Degrees of Freedom (DoF) MyCobot robotic arm so that, given an initial state of the robot, it can get an actuator to a specified position in 3D space without hitting an obstacle.
 
 Since the robotic arm mentioned is used for surgical navigation, the actual application scenario would be in such context, with the actuator being a needle, the target, a location in the patient's head, and the obstacle, the patient's head itself.
 
 For that matter, this project falls within the Hybrid domain of planning, using Numeric variables and durative actions. Thus, the planner used is ENHSP (https://sites.google.com/view/enhsp/home), created by Enrico Scala et al.
+
+### Roadmap
 
 Given the complexity of the problem and its potential implementation in real-world scenarios, we have devised the following roadmap:
 
