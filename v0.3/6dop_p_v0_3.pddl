@@ -20,14 +20,17 @@
 	(= (l3) 5.0)
 
 	;;Target
-	(= (target_x) 0.0)
+	(= (target_x) -5.0)
 	(= (target_y) 5.0)
-	(= (target_z) 8.0)
+	(= (target_z) 3.0)
+	; (= (target_x) 0.0)
+	; (= (target_y) 5.0)
+	; (= (target_z) 3.0)
 
 	;;Head is modelled as a sphere
 	(= (sphere_center_x) 4.0)
 	(= (sphere_center_y) 4.0)
-	(= (sphere_center_z) 3.0)
+	(= (sphere_center_z) 200.0)
 	(= (squared_sphere_radius) 9.0) ;;r², avoids needing to calculate the square of the radius for every collision check
 	
 	;;Global goal conditions
@@ -37,22 +40,39 @@
   )
 
   (:goal
-    (and 
+	(and 
 		(<= 
-			(^ (- j3_x target_x) 2)
+			(+ (^ (- j3_x target_x) 2)
+			   (+ (^ (- j3_y target_y) 2)
+			      (^ (- j3_z target_z) 2)
+			   )
+			)
 			(epsilon)
 		)
-		(<= 
-			(^ (- j3_y target_y) 2)
-			(epsilon)
-		)
-		(<= 
-			(^ (- j3_z target_z) 2)
-			(epsilon)
-		)
+		(= (j2_angle) 1.5707969851791859)
 		(no_movement)
 		(not (head_hit))
 	)
+
+	; (and 
+	; 	(>= (j2_angle) 1.5707969851791859)
+	; 	(<= (j3_angle) -1.5707969851791859)
+	; 	(no_movement))
+
+    ; (and 
+	; 	(<= 
+	; 		(+ (^ (- j2_x target_x) 2)
+	; 		   (+ (^ (- j2_y target_y) 2)
+	; 		      (^ (- j2_z target_z) 2)
+	; 		   )
+	; 		)
+	; 		(epsilon)
+	; 	)
+	; 	(= (j3_angle) -1.5707969851791859)
+	; 	(no_movement)
+	; 	(not (head_hit))
+	; )
+
 	;(and (head_hit))
   )
 )
