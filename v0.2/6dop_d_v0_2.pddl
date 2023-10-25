@@ -6,6 +6,7 @@
     (:predicates
         (joint_2_moving)
         (no_movement)
+        (head_hit)
     )
 
     (:functions
@@ -15,6 +16,11 @@
         (l2)
         (j2_angle)
         (w2)
+
+        (sphere_center_x)
+        (sphere_center_y)
+        (sphere_center_z)
+        (squared_sphere_radius)
 
         (target_x)
         (target_y)
@@ -44,6 +50,27 @@
             (increase (j2_angle) (* #t w2))
             (assign (j2_x)(* l2 (cos (+ (j2_angle)(* #t w2)))))
             (assign (j2_y)(* l2 (sin (+ (j2_angle)(* #t w2)))))
+        )
+    )
+
+    (:event head_collision
+        :parameters ()
+        :precondition (and
+            (not (no_movement))
+            (<= 
+                (+ 
+                    (^ (- j2_x sphere_center_x) 2)
+                    (+ (^ (- j2_y sphere_center_y) 2)
+                        (^ (- j2_z sphere_center_z) 2)
+                    )
+                )
+                (squared_sphere_radius)
+            )
+        )
+        :effect (and
+            (no_movement)
+            (not (joint_2_moving))
+            (head_hit)
         )
     )
 
