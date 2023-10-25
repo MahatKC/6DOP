@@ -50,6 +50,7 @@
 		; (= (j2_angle) 1.5707969851791859)
 		(no_movement)
 		(not (head_hit))
+		(not (floor_hit))
 	)
 
     ;------Auxiliary goals to test different behaviors-------

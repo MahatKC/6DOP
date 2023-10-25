@@ -14,6 +14,7 @@
         (joint_3_finished)
         (no_movement)
         (head_hit)
+        (floor_hit)
     )
 
     (:functions
@@ -124,6 +125,23 @@
             (no_movement)
             (not (joint_2_moving))
             (head_hit)
+        )
+    )
+
+    (:event floor_collision
+        :parameters ()
+        :precondition (and
+            (not (no_movement))
+            (or
+                (<= j2_z 0.0)
+                (<= j3_z 0.0)
+            )
+        )
+        :effect (and
+            (no_movement)
+            (not (joint_2_moving))
+            (not (joint_3_moving))
+            (floor_hit)
         )
     )
 
