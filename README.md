@@ -25,10 +25,10 @@ For that matter, this project falls within the Hybrid domain of planning, using 
 
 Given the complexity of the problem and its potential implementation in real-world scenarios, we have devised the following roadmap:
 
-- v0.1 - With a single movable joint starting at a position in 3D space, have the joint reach the target position
-- v0.2 - Still with a single movable joint, add a simple spatial obstacle (cube or sphere) and have the joint reach the target without hitting the obstacle
-- v0.3 - Add another movable joint, forbidding either of them of hitting the obstacle and having the edge of the last joint reach the obstacle (that being the goal for future versions as well)
-- v0.4 - Forbid the joints of hitting the floor (having that constraint for all joints added in future versions)
+- v0.1 - With a single movable joint starting at a position in 3D space, have the joint reach the target position ✅
+- v0.2 - Still with a single movable joint, add a simple spatial obstacle (cube or sphere) and have the joint reach the target without hitting the obstacle ✅
+- v0.3 - Add another movable joint, forbidding either of them of hitting the obstacle and having the edge of the last joint reach the obstacle (that being the goal for future versions as well) ✅
+- v0.4 - Forbid the joints of hitting the floor (having that constraint for all joints added in future versions) ✅
 - v0.5 - Add a third joint
 - v0.6 - Add a fourth joint
 - v0.7 - Model collision of the joints' segments (having that constraint for all joints added in future versions)
