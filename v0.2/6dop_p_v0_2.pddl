@@ -26,21 +26,22 @@
   )
 
   (:goal
-    ; (and 
-	; 	(<= 
-	; 		(^ (- j2_x target_x) 2)
-	; 		(epsilon)
-	; 	)
-	; 	(<= 
-	; 		(^ (- j2_y target_y) 2)
-	; 		(epsilon)
-	; 	)
-	; 	(<= 
-	; 		(^ (- j2_z target_z) 2)
-	; 		(epsilon)
-	; 	)
-	; 	(no_movement)
-	; )
-	(and (head_hit))
+    (and 
+		(<= 
+			(^ (- j2_x target_x) 2)
+			(epsilon)
+		)
+		(<= 
+			(^ (- j2_y target_y) 2)
+			(epsilon)
+		)
+		(<= 
+			(^ (- j2_z target_z) 2)
+			(epsilon)
+		)
+		(no_movement)
+		(not (head_hit))
+	)
+	;(and (head_hit))
   )
 )
