@@ -30,11 +30,11 @@ Given the complexity of the problem and its potential implementation in real-wor
 - v0.3 - Add another movable joint, forbidding either of them of hitting the obstacle and having the edge of the last joint reach the obstacle (that being the goal for future versions as well)
 - v0.4 - Forbid the joints of hitting the floor (having that constraint for all joints added in future versions)
 - v0.5 - Add a fourth joint
-- v0.6 - Model collision of the joints' edges (having that constraint for all joints added in future versions)
+- v0.6 - Model collision of the joints' segments (having that constraint for all joints added in future versions)
 - v0.7 - Add a fifth joint
-- v1.0 - Add a sixth joint, whose rotational axis is along its edge's axis
+- v1.0 - Add a sixth joint, whose rotational axis is along its segment's axis
 - v1.1 - Improve the obstacle's shape to better simulate an actual head
-- v1.2 - Consider the width of the joints' edges to better simulate edge collision
+- v1.2 - Consider the width of the joints' segments to better simulate segment collision
 - v1.3 - Apply the output of the planner to the 3D Slicer simulator
 - v2.0 - Fully integrate the planner to 3D Slicer so the planning takes place from a position set at the simulator and outputs a set of actions that can be visualized on 3D Slicer
 - v3.0 - Integrate the planner with ROS (Robot Operating System) so that it moves the actual MyCobot robotic arm
