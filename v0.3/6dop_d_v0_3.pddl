@@ -7,21 +7,23 @@
         (joint_2_moving)
         (joint_2_moving_clockwise)
         (joint_2_moving_counterclockwise)
+        (joint_2_finished)
         (no_movement)
         (head_hit)
     )
 
     (:functions
-        (mov_x)
-        (mov_y)
-        (mov_z)
-
         (j2_x)
         (j2_y)
         (j2_z)
         (l2)
         (j2_angle)
-        (w)
+
+       (j3_x)
+        (j3_y)
+        (j3_z)
+        (l3)
+        (j3_angle)
 
         (sphere_center_x)
         (sphere_center_y)
@@ -32,6 +34,7 @@
         (target_y)
         (target_z)
         (epsilon)
+        (w)
     )  
 
     (:action move_j2_clockwise
@@ -39,14 +42,12 @@
         :precondition (and 
             (no_movement)
             (not (joint_2_moving))
+            (not (joint_2_finished))
         )
         :effect (and 
             (joint_2_moving)
             (joint_2_moving_clockwise)
             (not (no_movement))
-            (assign (mov_x)(j2_x))
-            (assign (mov_y)(j2_y))
-            (assign (mov_z)(j2_z))
         )
     )
 
@@ -61,8 +62,8 @@
             (decrease (j2_angle) (* #t w))
             (assign (j2_x)(* l2 (cos (- (j2_angle)(* #t w)))))
             (assign (j2_y)(* l2 (sin (- (j2_angle)(* #t w)))))
-            (assign (mov_x)(j2_x))
-            (assign (mov_y)(j2_y))
+            (assign (j3_x)(j2_x))
+            (assign (j3_y)(j2_y))
         )
     )
 
@@ -71,14 +72,12 @@
         :precondition (and 
             (no_movement)
             (not (joint_2_moving))
+            (not (joint_2_finished))
         )
         :effect (and 
             (joint_2_moving)
             (joint_2_moving_counterclockwise)
             (not (no_movement))
-            (assign (mov_x)(j2_x))
-            (assign (mov_y)(j2_y))
-            (assign (mov_z)(j2_z))
         )
     )
 
@@ -91,22 +90,22 @@
         )
         :effect (and
             (increase (j2_angle) (* #t w))
-            (assign (j2_x)(* l2 (cos (- (j2_angle)(* #t w)))))
-            (assign (j2_y)(* l2 (sin (- (j2_angle)(* #t w)))))
-            (assign (mov_x)(j2_x))
-            (assign (mov_y)(j2_y))
+            (assign (j2_x)(* l2 (cos (+ (j2_angle)(* #t w)))))
+            (assign (j2_y)(* l2 (sin (+ (j2_angle)(* #t w)))))
+            (assign (j3_x)(j2_x))
+            (assign (j3_y)(j2_y))
         )
     )
 
-    (:event head_collision
+    (:event head_collision_j2
         :parameters ()
         :precondition (and
             (not (no_movement))
             (<= 
                 (+ 
-                    (^ (- mov_x sphere_center_x) 2)
-                    (+ (^ (- mov_y sphere_center_y) 2)
-                       (^ (- mov_z sphere_center_z) 2)
+                    (^ (- j2_x sphere_center_x) 2)
+                    (+ (^ (- j2_y sphere_center_y) 2)
+                       (^ (- j2_z sphere_center_z) 2)
                     )
                 )
                 (squared_sphere_radius)
@@ -130,6 +129,28 @@
             (not (joint_2_moving_clockwise))
             (not (joint_2_moving_counterclockwise))
             (no_movement)
+            (joint_2_finished)
+        )
+    )
+
+    (:event head_collision_j3
+        :parameters ()
+        :precondition (and
+            (not (no_movement))
+            (<= 
+                (+ 
+                    (^ (- j3_x sphere_center_x) 2)
+                    (+ (^ (- j3_y sphere_center_y) 2)
+                       (^ (- j3_z sphere_center_z) 2)
+                    )
+                )
+                (squared_sphere_radius)
+            )
+        )
+        :effect (and
+            (no_movement)
+            (not (joint_2_moving))
+            (head_hit)
         )
     )
 )

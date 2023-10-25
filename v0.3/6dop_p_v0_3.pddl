@@ -5,11 +5,6 @@
   )
 
   (:init
-    ;;MOV is a set of temporary variables to detect collisions for any moving joint
-	(= (mov_x) 0.0)
-	(= (mov_y) 0.0)
-	(= (mov_z) 0.0)
-
 	;;J2 variables
     (= (j2_x) 5.0) ;;L2
 	(= (j2_y) 0.0)
@@ -17,10 +12,17 @@
 	(= (j2_angle) 0.0) ;;Angle between J2->J1 and the x axis
 	(= (l2) 5.0)
 
+	;;J3 variables
+    (= (j3_x) 5.0) ;;L3
+	(= (j3_y) 0.0)
+	(= (j3_z) 8.0)
+	(= (j3_angle) 0.0) ;;Angle between J3->J2 and the z axis
+	(= (l3) 5.0)
+
 	;;Target
 	(= (target_x) 0.0)
 	(= (target_y) 5.0)
-	(= (target_z) 3.0)
+	(= (target_z) 8.0)
 
 	;;Head is modelled as a sphere
 	(= (sphere_center_x) 4.0)
@@ -37,15 +39,15 @@
   (:goal
     (and 
 		(<= 
-			(^ (- j2_x target_x) 2)
+			(^ (- j3_x target_x) 2)
 			(epsilon)
 		)
 		(<= 
-			(^ (- j2_y target_y) 2)
+			(^ (- j3_y target_y) 2)
 			(epsilon)
 		)
 		(<= 
-			(^ (- j2_z target_z) 2)
+			(^ (- j3_z target_z) 2)
 			(epsilon)
 		)
 		(no_movement)
