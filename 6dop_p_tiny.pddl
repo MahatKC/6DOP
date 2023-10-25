@@ -10,7 +10,7 @@
 	(= (j2_z) 6.0)
 	(= (j2_angle) 0.0) ;;Angle between J2->J1 and the x axis
 	(= (l2) 5.0)
-	(= (w2) 0.01745) ;;Angular speed (~ 1 degrees/sec)
+	(= (w2) 0.0174533) ;;Angular speed (1 degree/sec)
 
 	(= (target_x) 0.0)
 	(= (target_y) 5.0)
