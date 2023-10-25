@@ -37,6 +37,7 @@
         (target_x)
         (target_y)
         (target_z)
+        (total_time)
         (epsilon)
         (w)
     )  
@@ -64,6 +65,8 @@
         )
         :effect (and
             (decrease (j2_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
+            ;Angle update doesnt happen before cos/sin calculations, so calculation has to happen here
             (assign (j2_x)(* l2 (cos (- (j2_angle)(* #t w)))))
             (assign (j2_y)(* l2 (sin (- (j2_angle)(* #t w)))))
             (assign (j3_x)(j2_x))
@@ -94,6 +97,8 @@
         )
         :effect (and
             (increase (j2_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
+            ;Angle update doesnt happen before cos/sin calculations, so calculation has to happen here
             (assign (j2_x)(* l2 (cos (+ (j2_angle)(* #t w)))))
             (assign (j2_y)(* l2 (sin (+ (j2_angle)(* #t w)))))
             (assign (j3_x)(j2_x))
@@ -183,6 +188,7 @@
         )
         :effect (and
             (increase (j3_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
             (assign (j3_x)
                 (+ j2_x (
                     * (sin j2_angle)
@@ -227,6 +233,7 @@
         )
         :effect (and
             (decrease (j3_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
             (assign (j3_x)
                 (+ j2_x (
                     * (sin j2_angle)
@@ -261,4 +268,32 @@
             (joint_3_finished)
         )
     )
+
+    ;Angle resets are relevant to avoid infinite states
+    (:event reset_j2_angle
+        :parameters ()
+        :precondition (and
+            (or 
+                (>= (j2_angle) 6.28318530717958648)
+                (<= (j2_angle) -6.28318530717958648)
+            )
+        )
+        :effect (and
+            (assign (j2_angle) 0.0)
+        )
+    )
+
+    (:event reset_j3_angle
+        :parameters ()
+        :precondition (and
+            (or 
+                (>= (j3_angle) 6.28318530717958648)
+                (<= (j3_angle) -6.28318530717958648)
+            )
+        )
+        :effect (and
+            (assign (j3_angle) 0.0)
+        )
+    )
+    
 )
