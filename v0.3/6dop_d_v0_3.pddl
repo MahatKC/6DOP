@@ -12,12 +12,16 @@
     )
 
     (:functions
+        (mov_x)
+        (mov_y)
+        (mov_z)
+
         (j2_x)
         (j2_y)
         (j2_z)
         (l2)
         (j2_angle)
-        (w2)
+        (w)
 
         (sphere_center_x)
         (sphere_center_y)
@@ -40,6 +44,9 @@
             (joint_2_moving)
             (joint_2_moving_clockwise)
             (not (no_movement))
+            (assign (mov_x)(j2_x))
+            (assign (mov_y)(j2_y))
+            (assign (mov_z)(j2_z))
         )
     )
 
@@ -51,9 +58,11 @@
             (not (no_movement))
         )
         :effect (and
-            (decrease (j2_angle) (* #t w2))
-            (assign (j2_x)(* l2 (cos (- (j2_angle)(* #t w2)))))
-            (assign (j2_y)(* l2 (sin (- (j2_angle)(* #t w2)))))
+            (decrease (j2_angle) (* #t w))
+            (assign (j2_x)(* l2 (cos (- (j2_angle)(* #t w)))))
+            (assign (j2_y)(* l2 (sin (- (j2_angle)(* #t w)))))
+            (assign (mov_x)(j2_x))
+            (assign (mov_y)(j2_y))
         )
     )
 
@@ -67,6 +76,9 @@
             (joint_2_moving)
             (joint_2_moving_counterclockwise)
             (not (no_movement))
+            (assign (mov_x)(j2_x))
+            (assign (mov_y)(j2_y))
+            (assign (mov_z)(j2_z))
         )
     )
 
@@ -78,9 +90,11 @@
             (not (no_movement))
         )
         :effect (and
-            (increase (j2_angle) (* #t w2))
-            (assign (j2_x)(* l2 (cos (+ (j2_angle)(* #t w2)))))
-            (assign (j2_y)(* l2 (sin (+ (j2_angle)(* #t w2)))))
+            (increase (j2_angle) (* #t w))
+            (assign (j2_x)(* l2 (cos (- (j2_angle)(* #t w)))))
+            (assign (j2_y)(* l2 (sin (- (j2_angle)(* #t w)))))
+            (assign (mov_x)(j2_x))
+            (assign (mov_y)(j2_y))
         )
     )
 
@@ -90,9 +104,9 @@
             (not (no_movement))
             (<= 
                 (+ 
-                    (^ (- j2_x sphere_center_x) 2)
-                    (+ (^ (- j2_y sphere_center_y) 2)
-                       (^ (- j2_z sphere_center_z) 2)
+                    (^ (- mov_x sphere_center_x) 2)
+                    (+ (^ (- mov_y sphere_center_y) 2)
+                       (^ (- mov_z sphere_center_z) 2)
                     )
                 )
                 (squared_sphere_radius)
