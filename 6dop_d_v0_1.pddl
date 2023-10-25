@@ -1,5 +1,5 @@
 (define
-    (domain six_dop_dom_tiny)
+    (domain six_dop_dom_v0_1)
 
     (:requirements :disjunctive-preconditions :durative-actions :fluents :numeric-fluents :duration-inequalities :time :negative-preconditions :equality)
 

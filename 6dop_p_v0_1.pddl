@@ -1,5 +1,5 @@
-(define (problem six_dop_pro_tiny)
-  (:domain six_dop_dom_tiny)
+(define (problem six_dop_pro_v0_1)
+  (:domain six_dop_dom_v0_1)
   (:objects
     
   )
