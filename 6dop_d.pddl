@@ -177,8 +177,8 @@
         )
         :effect (and
             (decrease (j2_angle)(* #t w2))
-            (assign (j2_x)(cos (- j2_angle (* #t w2))))
-            (assign (j2_y)(sin (- j2_angle (* #t w2))))
+            (assign (j2_x)(* l2 (cos (- j2_angle (* #t w2)))))
+            (assign (j2_y)(* l2 (sin (- j2_angle (* #t w2)))))
         )
     )
 
@@ -191,8 +191,8 @@
         )
         :effect (and
             (increase (j2_angle) (* #t w2))
-            (assign (j2_x)(cos (+ j2_angle (* #t w2))))
-            (assign (j2_y)(sin (+ j2_angle (* #t w2))))
+            (assign (j2_x)(* l2 (cos (+ j2_angle (* #t w2)))))
+            (assign (j2_y)(* l2 (sin (+ j2_angle (* #t w2)))))
         )
     )
 
