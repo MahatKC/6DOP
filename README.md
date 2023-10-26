@@ -25,15 +25,17 @@ For that matter, this project falls within the Hybrid domain of planning, using 
 
 Given the complexity of the problem and its potential implementation in real-world scenarios, we have devised the following roadmap:
 
-- v0.1 - With a single movable joint starting at a position in 3D space, have the joint reach the target position
-- v0.2 - Still with a single movable joint, add a simple spatial obstacle (cube or sphere) and have the joint reach the target without hitting the obstacle
-- v0.3 - Add another movable joint, forbidding either of them of hitting the obstacle and having the edge of the last joint reach the obstacle (that being the goal for future versions as well)
-- v0.4 - Forbid the joints of hitting the floor (having that constraint for all joints added in future versions)
-- v0.5 - Add a third joint
-- v0.6 - Add a fourth joint
+- v0.1 - With a single movable joint starting at a position in 3D space, have the joint reach the target position ✅
+- v0.2 - Still with a single movable joint, add a simple spatial obstacle (cube or sphere) and have the joint reach the target without hitting the obstacle ✅
+- v0.3 - Add another movable joint, forbidding either of them of hitting the obstacle and having the edge of the last joint reach the obstacle (that being the goal for future versions as well) ✅
+- v0.4 - Forbid the joints of hitting the floor (having that constraint for all joints added in future versions) ✅
+- v0.5 - Add a third joint that does not move on its own
+- v0.6 - Add a fourth joint, which is movable
+- v0.6 - Add a fifth joint (movable)
 - v0.7 - Model collision of the joints' segments (having that constraint for all joints added in future versions)
-- v0.8 - Add a fifth joint
-- v1.0 - Add a sixth joint, whose rotational axis is along its segment's axis
+- v0.8 - Add a sixth joint (movable)
+- v0.9 - Add a seventh joint, whose rotational axis is along its segment's axis
+- v1.0 - Add an eighth joint (movable) and a ninth (that does not move on its own)
 - v1.1 - Improve the obstacle's shape to better simulate an actual head
 - v1.2 - Consider the width of the joints' segments to better simulate segment collision
 - v1.3 - Apply the output of the planner to the 3D Slicer simulator
