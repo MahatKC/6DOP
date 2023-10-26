@@ -23,23 +23,27 @@
     )
 
     (:functions
+        ;J2 variables
         (j2_x)
         (j2_y)
         (j2_z)
         (l2)
         (j2_angle)
 
+        ;J3 variables
         (j3_x)
         (j3_y)
         (j3_z)
         (l3)
         (j3_angle)
 
+        ;Sphere variables
         (sphere_center_x)
         (sphere_center_y)
         (sphere_center_z)
         (squared_sphere_radius)
 
+        ;Global variables
         (target_x)
         (target_y)
         (target_z)
