@@ -158,7 +158,7 @@
             (not (no_movement))
         )
         :effect (and
-            (increase (j3_angle) (* #t w))
+            (decrease (j3_angle) (* #t w))
             (increase (total_time) (* #t 1.0))
             (assign (j3_x)
                 (+ j2_x (
@@ -174,12 +174,12 @@
             )
             (assign (j3_z)
                 (+ j2_z 
-                    (* l3 (cos (+ j3_angle (* #t w))))
+                    (* l3 (cos (- j3_angle (* #t w))))
                 )
             )
         )
     )
-
+    
     (:action move_j3_counterclockwise
         :parameters ()
         :precondition (and 
@@ -203,7 +203,7 @@
             (not (no_movement))
         )
         :effect (and
-            (decrease (j3_angle) (* #t w))
+            (increase (j3_angle) (* #t w))
             (increase (total_time) (* #t 1.0))
             (assign (j3_x)
                 (+ j2_x (
@@ -219,7 +219,7 @@
             )
             (assign (j3_z)
                 (+ j2_z 
-                    (* l3 (cos (- j3_angle (* #t w))))
+                    (* l3 (cos (+ j3_angle (* #t w))))
                 )
             )
         )
