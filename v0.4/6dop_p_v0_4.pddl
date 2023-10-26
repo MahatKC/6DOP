@@ -5,7 +5,9 @@
   )
 
   (:init
+    ;Metric variable (not currently being used)
     (= (total_time) 0.0)
+
 	;;J2 variables
     (= (j2_x) 5.0) ;;L2
 	(= (j2_y) 0.0)
@@ -32,13 +34,14 @@
 	(= (squared_sphere_radius) 9.0) ;;r², avoids needing to calculate the square of the radius for every collision check
 	
 	;;Global goal conditions
-	(= (w) 0.0174533) ;;Angular speed of joints: 1 degree/sec
-	(= (epsilon) 0) ;;Acceptable squared error
+	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
+	(= (epsilon) 0) ;;Acceptable squared error, can be increased
 	(no_movement)
   )
 
   (:goal
 	(and 
+		;Desired joint must be close to target (closeness determined by epsilon)
 		(<= 
 			(+ (^ (- j3_x target_x) 2)
 			   (+ (^ (- j3_y target_y) 2)
@@ -47,17 +50,18 @@
 			)
 			(epsilon)
 		)
-		; (= (j2_angle) 1.5707969851791859)
+		;No movement must be happening (stop action must have been called)
 		(no_movement)
+		;No collision has happened
 		(not (head_hit))
 		(not (floor_hit))
 	)
 
-    ;------Auxiliary goals to test different behaviors-------
+    ;####### Auxiliary goals to test different behaviors #######
 	;##### Change goal to specific joint angles
 	; (and 
-	; 	(>= (j2_angle) 1.5707969851791859)
-	; 	(<= (j3_angle) -1.5707969851791859)
+	; 	(>= (j2_angle) 1.5707969851791859) ;90 degrees
+	; 	(<= (j3_angle) -1.5707969851791859) ;-90 degrees
 	; 	(no_movement))
 
 	;##### Change goal so that the obstacle is hit
