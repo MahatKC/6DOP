@@ -81,21 +81,27 @@
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (epsilon) 1) ;;Acceptable squared error, can be increased
+	(= (lambda) 1) ;;Acceptable squared error, can be increased
+	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
 	(no_movement)
 	(= (updating_positions) 0)
+
+	;;Sums of lengths to speed up computations
+	(= (l3_l5) 220.8)
+	(= (l3_l5_l7) 331.2)
+	(= (l3_l5_l7_l9) 361.2)
   )
 
   (:goal
 	; (and 
-	; 	;Desired joint must be close to target (closeness determined by epsilon)
+	; 	;Desired joint must be close to target (closeness determined by lambda)
 	; 	(<= 
 	; 		(+ (^ (- j9_x target_x) 2)
 	; 		   (+ (^ (- j9_y target_y) 2)
 	; 		      (^ (- j9_z target_z) 2)
 	; 		   )
 	; 		)
-	; 		(epsilon)
+	; 		(lambda)
 	; 	)
 	; 	;No movement must be happening (stop action must have been called)
 	; 	(no_movement)
@@ -113,13 +119,14 @@
 	; )
 
 	;##### Change goal so that the obstacle is hit
-	;(and (head_hit))
-	(and (<= j6_x 0.001)
-		(<= j2_x 0.001)
-		(<= j3_x 0.001)
-		(<= j7_x 0.001)
-		(<= j8_x 0.001)
-		(<= j9_x 0.001)
+	;(and (head_hit)(no_movement))
+
+	(and (<= j6_x epsilon)
+		(<= j2_x epsilon)
+		(<= j3_x epsilon)
+		(<= j7_x epsilon)
+		(<= j8_x epsilon)
+		(<= j9_x epsilon)
 		(no_movement)
 	)
   )
