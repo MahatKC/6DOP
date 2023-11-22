@@ -61,7 +61,7 @@ file_path = folder + "6dop_p.pddl_search_gbfs_h_hadd_break_ties_arbitrary.npt"
 if not os.path.exists(file_path):
     print("\nFILE NOT FOUND!\nInput name of folder with backslash. Ex: \'folder\\\'")
 else:
-    with open(str(sys.argv[1])+"6dop_p.pddl_search_gbfs_h_hadd_break_ties_arbitrary.npt") as f:
+    with open(file_path) as f:
         lines = f.readlines()
         for lin_idx in range(0, len(lines), 2):
             joints_list = [[0, 0, 0], [0, 0, 131.56]]
@@ -76,7 +76,7 @@ else:
     min_axis = min(MIN_X, MIN_Y)
     max_axis = max(MAX_X, MAX_Y)
 
-    with open("v0.6/6dop_p.pddl_search_gbfs_h_hadd_break_ties_arbitrary.npt") as f:
+    with open(file_path) as f:
         lines = f.readlines()
         for lin_idx in range(0, len(lines), 2):
             joints_list = [[0, 0, 0], [0, 0, 131.56]]
