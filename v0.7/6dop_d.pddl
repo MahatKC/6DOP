@@ -128,6 +128,7 @@
         (l3_l5_l7_l9)
         (l5_l7)
         (l5_l7_l9)
+        (l7_l9)
     )  
 
     ;---------------------------------- J2 --------------------------------------------------------
@@ -630,6 +631,152 @@
             (not (joint_5_moving_counterclockwise))
             (no_movement)
             (joint_5_finished)
+        )
+    )
+
+    ;---------------------------------- J7 --------------------------------------------------------
+    (:action move_j7_clockwise
+        :parameters ()
+        :precondition (and 
+            (no_movement)
+            (not (joint_7_moving))
+            (not (joint_7_finished))
+            (joint_5_finished)
+        )
+        :effect (and 
+            (joint_7_moving)
+            (joint_7_moving_clockwise)
+            (not (no_movement))
+        )
+    )
+
+    (:process moving_j7_clockwise
+        :parameters ()
+        :precondition (and
+            (joint_7_moving)
+            (joint_7_moving_clockwise)
+            (not (no_movement))
+            (<= updating_positions 0)
+        )
+        :effect (and
+            (decrease (j7_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
+            (assign (updating_positions) 1.0)
+            ;Further angles using absolute value in relation to world
+            (decrease (j9_angle) (* #t w))
+        )
+
+    )
+    
+    (:action move_j7_counterclockwise
+        :parameters ()
+        :precondition (and 
+            (no_movement)
+            (not (joint_7_moving))
+            (not (joint_7_finished))
+            (joint_5_finished)
+        )
+        :effect (and 
+            (joint_7_moving)
+            (joint_7_moving_counterclockwise)
+            (not (no_movement))
+        )
+    )
+
+    (:process moving_j7_counterclockwise
+        :parameters ()
+        :precondition (and
+            (joint_7_moving)
+            (joint_7_moving_counterclockwise)
+            (not (no_movement))
+            (<= updating_positions 0)
+        )
+        :effect (and
+            (increase (j7_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
+            (assign (updating_positions) 1.0)
+            ;Further angles using absolute value in relation to world
+            (increase (j9_angle) (* #t w))
+        )
+    )
+
+    (:event update_positions_j7_moving
+        :parameters ()
+        :precondition (and
+            (joint_7_moving)
+            (= updating_positions 1.0)
+        )
+        :effect (and
+            ;J7 UPDATE
+            (assign (j7_x)
+                (+ j6_x (
+                    * (sin j2_angle)
+                    (* l7 (sin (j7_angle)))
+                ))
+            )
+            (assign (j7_y)
+                (+ j6_y (
+                    * (cos j2_angle)
+                    (* l7 (sin (j7_angle)))
+                ))
+            )
+            (assign (j7_z)
+                (+ j6_z 
+                    (* l7 (cos (j7_angle)))
+                )
+            )
+            ;J8 UPDATE
+            (assign (j8_x)
+                (+ (+ j6_x (* l8 (cos j2_angle))) (
+                    * (sin j2_angle)
+                    (* l7 (sin (j7_angle)))
+                ))
+            )
+            (assign (j8_y)
+                (+ (+ j6_y (* l8 (sin j2_angle))) (
+                    * (cos j2_angle)
+                    (* l7 (sin (j7_angle)))
+                ))
+            )
+            (assign (j8_z)
+                (+ j6_z 
+                    (* l7 (cos (j7_angle)))
+                )
+            )
+            ;J9 UPDATE
+            (assign (j9_x)
+                (+ (+ j6_x (* l8 (cos j2_angle))) (
+                    * (sin j2_angle)
+                    (* l7_l9 (sin (j7_angle)))
+                ))
+            )
+            (assign (j9_y)
+                (+ (+ j6_y (* l8 (sin j2_angle))) (
+                    * (cos j2_angle)
+                    (* l7_l9 (sin (j7_angle)))
+                ))
+            )
+            (assign (j9_z)
+                (+ j6_z 
+                    (* l7_l9 (cos (j7_angle)))
+                )
+            )
+            (assign updating_positions 0.0)
+        )
+    )
+
+    (:action stop_j7
+        :parameters ()
+        :precondition (and
+            (joint_7_moving)
+            (not (no_movement))
+        )
+        :effect (and 
+            (not (joint_7_moving))
+            (not (joint_7_moving_clockwise))
+            (not (joint_7_moving_counterclockwise))
+            (no_movement)
+            (joint_7_finished)
         )
     )
 

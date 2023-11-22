@@ -92,6 +92,7 @@
 	(= (l3_l5_l7_l9) 361.2)
 	(= (l5_l7) 220.8)
 	(= (l5_l7_l9) 250.8)
+	(= (l7_l9) 140.4)
   )
 
   (:goal
@@ -115,9 +116,15 @@
     ;####### Auxiliary goals to test different behaviors #######
 	;##### Change goal to specific joint angles
 	(and 
-		(>= (j2_angle) 1.5707969851791859) ;90 degrees
-		(<= (j3_angle) -1.5707969851791859) ;-90 degrees
-		(>= (j5_angle) -1.308996938995747) ;-75 degrees (-90 + 15)
+		(<= (j2_angle) 1.58)
+		(>= (j2_angle) 1.57) ;90 degrees
+		(<= (j3_angle) 0.262)
+		(>= (j3_angle) 0.261) ;-90 degrees
+		(<= (j5_angle) -0.261)
+		(>= (j5_angle) -0.262)
+		(<= (j7_angle) 0.262)
+		(>= (j7_angle) 0.261)
+		;(>= (j7_angle) 0.0872664625997) ;-45 degrees (-90 + 15 + 30)
 		(no_movement)
 	)
 
