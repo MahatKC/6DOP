@@ -31,7 +31,7 @@ Given the complexity of the problem and its potential implementation in real-wor
 - v0.4 - Forbid the joints of hitting the floor (having that constraint for all joints added in future versions) ✅
 - v0.5 - Add a third joint (J4) that does not move on its own ✅
 - v0.6 - Add all remaining joints (J0, J1, J5, J6, J7, J8, J9) and model their movement according to the previously modelled movements, add M5, create python visualization tool ✅
-- v0.7 - Add M7
+- v0.7 - Add M7 ✅
 - v0.8 - Model collision of the joints' segments
 - v0.9 - Add M8
 - v1.0 - Add M9
