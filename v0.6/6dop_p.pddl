@@ -114,14 +114,15 @@
 
     ;####### Auxiliary goals to test different behaviors #######
 	;##### Change goal to specific joint angles
-	; (and 
-	; 	(>= (j2_angle) 1.5707969851791859) ;90 degrees
-	; 	(<= (j3_angle) -1.5707969851791859) ;-90 degrees
-	; 	(no_movement)
-	; )
+	(and 
+		(>= (j2_angle) 1.5707969851791859) ;90 degrees
+		(<= (j3_angle) -1.5707969851791859) ;-90 degrees
+		(>= (j5_angle) -1.308996938995747) ;-75 degrees (-90 + 15)
+		(no_movement)
+	)
 
 	;##### Change goal so that the obstacle is hit
-	(and (head_hit)(no_movement))
+	; (and (head_hit)(no_movement))
 
 	; (and (<= j6_x epsilon)
 	; 	(<= j2_x epsilon)
