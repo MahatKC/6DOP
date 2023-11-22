@@ -52,10 +52,16 @@ MIN_Y = 0
 MAX_X = 0
 MAX_Y = 0
 
-if not os.path.exists(str(sys.argv[1])):
-    print("FILE NOT FOUND!")
+if len(sys.argv) > 1:
+    folder = str(sys.argv[1])
 else:
-    with open(str(sys.argv[1])) as f:
+    folder = ""
+file_path = folder + "6dop_p.pddl_search_gbfs_h_hadd_break_ties_arbitrary.npt"
+
+if not os.path.exists(file_path):
+    print("\nFILE NOT FOUND!\nInput name of folder with backslash. Ex: \'folder\\\'")
+else:
+    with open(str(sys.argv[1])+"6dop_p.pddl_search_gbfs_h_hadd_break_ties_arbitrary.npt") as f:
         lines = f.readlines()
         for lin_idx in range(0, len(lines), 2):
             joints_list = [[0, 0, 0], [0, 0, 131.56]]
