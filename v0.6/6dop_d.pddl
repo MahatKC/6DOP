@@ -126,6 +126,8 @@
         (l3_l5)
         (l3_l5_l7)
         (l3_l5_l7_l9)
+        (l5_l7)
+        (l5_l7_l9)
     )  
 
     ;---------------------------------- J2 --------------------------------------------------------
@@ -255,6 +257,10 @@
             (decrease (j3_angle) (* #t w))
             (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
+            ;Further angles using absolute value in relation to world
+            (decrease (j5_angle) (* #t w))
+            (decrease (j7_angle) (* #t w))
+            (decrease (j9_angle) (* #t w))
         )
 
     )
@@ -286,6 +292,10 @@
             (increase (j3_angle) (* #t w))
             (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
+            ;Further angles using absolute value in relation to world
+            (increase (j5_angle) (* #t w))
+            (increase (j7_angle) (* #t w))
+            (increase (j9_angle) (* #t w))
         )
     )
 
@@ -434,6 +444,192 @@
             (not (joint_3_moving_counterclockwise))
             (no_movement)
             (joint_3_finished)
+        )
+    )
+
+    ;---------------------------------- J5 --------------------------------------------------------
+    (:action move_j5_clockwise
+        :parameters ()
+        :precondition (and 
+            (no_movement)
+            (not (joint_5_moving))
+            (not (joint_5_finished))
+            (joint_3_finished)
+        )
+        :effect (and 
+            (joint_5_moving)
+            (joint_5_moving_clockwise)
+            (not (no_movement))
+        )
+    )
+
+    (:process moving_j5_clockwise
+        :parameters ()
+        :precondition (and
+            (joint_5_moving)
+            (joint_5_moving_clockwise)
+            (not (no_movement))
+            (<= updating_positions 0)
+        )
+        :effect (and
+            (decrease (j5_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
+            (assign (updating_positions) 1.0)
+            ;Further angles using absolute value in relation to world
+            (decrease (j7_angle) (* #t w))
+            (decrease (j9_angle) (* #t w))
+        )
+
+    )
+    
+    (:action move_j5_counterclockwise
+        :parameters ()
+        :precondition (and 
+            (no_movement)
+            (not (joint_5_moving))
+            (not (joint_5_finished))
+            (joint_3_finished)
+        )
+        :effect (and 
+            (joint_5_moving)
+            (joint_5_moving_counterclockwise)
+            (not (no_movement))
+        )
+    )
+
+    (:process moving_j5_counterclockwise
+        :parameters ()
+        :precondition (and
+            (joint_5_moving)
+            (joint_5_moving_counterclockwise)
+            (not (no_movement))
+            (<= updating_positions 0)
+        )
+        :effect (and
+            (increase (j5_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
+            (assign (updating_positions) 1.0)
+            ;Further angles using absolute value in relation to world
+            (increase (j7_angle) (* #t w))
+            (increase (j9_angle) (* #t w))
+        )
+    )
+
+    (:event update_positions_j5_moving
+        :parameters ()
+        :precondition (and
+            (joint_5_moving)
+            (= updating_positions 1.0)
+        )
+        :effect (and
+            ;J5 UPDATE
+            (assign (j5_x)
+                (+ j4_x (
+                    (* (sin j2_angle)
+                        (* l5 (sin (j5_angle)))
+                    )
+                )
+            )
+            (assign (j5_y)
+                (+ j4_y 
+                    (* (cos j2_angle)
+                        (* l5 (sin (j5_angle)))
+                    )
+                )
+            )
+            (assign (j5_z)
+                (+ j4_z 
+                    (* l5 (cos (j5_angle)))
+                )
+            )
+            ;J6 UPDATE
+            (assign (j6_x)
+                (+ j3_x (
+                    * (sin j2_angle)
+                    (* l5 (sin (j5_angle)))
+                ))
+            )
+            (assign (j6_y)
+                (+ j3_y (
+                    * (cos j2_angle)
+                    (* l5 (sin (j5_angle)))
+                ))
+            )
+            (assign (j6_z)
+                (+ j3_z 
+                    (* l5 (cos (j5_angle)))
+                )
+            )
+            ;J7 UPDATE
+            (assign (j7_x)
+                (+ j3_x (
+                    * (sin j2_angle)
+                    (* l5_l7 (sin (j5_angle)))
+                ))
+            )
+            (assign (j7_y)
+                (+ j3_y (
+                    * (cos j2_angle)
+                    (* l5_l7 (sin (j5_angle)))
+                ))
+            )
+            (assign (j7_z)
+                (+ j3_z 
+                    (* l5_l7 (cos (j5_angle)))
+                )
+            )
+            ;J8 UPDATE
+            (assign (j8_x)
+                (+ (+ j3_x (* l8 (cos j2_angle))) (
+                    * (sin j2_angle)
+                    (* l5_l7 (sin (j5_angle)))
+                ))
+            )
+            (assign (j8_y)
+                (+ (+ j3_y (* l8 (sin j2_angle))) (
+                    * (cos j2_angle)
+                    (* l5_l7 (sin (j5_angle)))
+                ))
+            )
+            (assign (j8_z)
+                (+ j3_z 
+                    (* l5_l7 (cos (j5_angle)))
+                )
+            )
+            ;J9 UPDATE
+            (assign (j9_x)
+                (+ (+ j3_x (* l8 (cos j2_angle))) (
+                    * (sin j2_angle)
+                    (* l5_l7_l9 (sin (j5_angle)))
+                ))
+            )
+            (assign (j9_y)
+                (+ (+ j3_y (* l8 (sin j2_angle))) (
+                    * (cos j2_angle)
+                    (* l5_l7_l9 (sin (j5_angle)))
+                ))
+            )
+            (assign (j9_z)
+                (+ j3_z 
+                    (* l5_l7_l9 (cos (j5_angle)))
+                )
+            )
+            (assign updating_positions 0.0)
+        )
+    )
+
+    (:action stop_j5
+        :parameters ()
+        :precondition (and
+            (joint_5_moving)
+            (not (no_movement))
+        )
+        :effect (and 
+            (not (joint_5_moving))
+            (not (joint_5_moving_clockwise))
+            (not (joint_5_moving_counterclockwise))
+            (no_movement)
+            (joint_5_finished)
         )
     )
 
