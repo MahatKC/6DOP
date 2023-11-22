@@ -524,7 +524,7 @@
         :effect (and
             ;J5 UPDATE
             (assign (j5_x)
-                (+ j4_x (
+                (+ j4_x 
                     (* (sin j2_angle)
                         (* l5 (sin (j5_angle)))
                     )

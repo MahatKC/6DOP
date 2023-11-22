@@ -121,16 +121,16 @@
 	; )
 
 	;##### Change goal so that the obstacle is hit
-	;(and (head_hit)(no_movement))
+	(and (head_hit)(no_movement))
 
-	(and (<= j6_x epsilon)
-		(<= j2_x epsilon)
-		(<= j3_x epsilon)
-		(<= j7_x epsilon)
-		(<= j8_x epsilon)
-		(<= j9_x epsilon)
-		(no_movement)
-	)
+	; (and (<= j6_x epsilon)
+	; 	(<= j2_x epsilon)
+	; 	(<= j3_x epsilon)
+	; 	(<= j7_x epsilon)
+	; 	(<= j8_x epsilon)
+	; 	(<= j9_x epsilon)
+	; 	(no_movement)
+	; )
   )
 
   ;Set a metric (hasn't had any effect yet, might have an effect in the future)
