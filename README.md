@@ -21,6 +21,22 @@ For that matter, this project falls within the Hybrid domain of planning, using 
 
 ---
 
+### Installation
+
+First, download ENHSP from its official website (https://sites.google.com/view/enhsp/home). Then, move the .jar file to the 6DOP folder and run the planner from the terminal with the following command:
+
+```
+java -jar enhsp-20.jar -o 6dop_d.pddl -f 6dop_p.pddl -pt
+```
+
+To visualize the movement of the robot with Matplotlib, make sure to have Numpy and Matplotlib installed for your Python interpreter and run the following command from your terminal:
+
+```
+python plot.py
+```
+
+---
+
 ### Roadmap
 
 Given the complexity of the problem and its potential implementation in real-world scenarios, we have devised the following roadmap:
