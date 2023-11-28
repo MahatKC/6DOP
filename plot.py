@@ -102,5 +102,3 @@ else:
             fig.clf()
 
         time.sleep(5)
-
-        input("Press Enter to close...")
