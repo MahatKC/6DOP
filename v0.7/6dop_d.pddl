@@ -220,6 +220,7 @@
         :precondition (and
             (joint_2_moving)
             (not (no_movement))
+            (<= updating_positions 0)
         )
         :effect (and 
             (not (joint_2_moving))
@@ -438,6 +439,7 @@
         :precondition (and
             (joint_3_moving)
             (not (no_movement))
+            (<= updating_positions 0)
         )
         :effect (and 
             (not (joint_3_moving))
@@ -624,6 +626,7 @@
         :precondition (and
             (joint_5_moving)
             (not (no_movement))
+            (<= updating_positions 0)
         )
         :effect (and 
             (not (joint_5_moving))
@@ -770,6 +773,7 @@
         :precondition (and
             (joint_7_moving)
             (not (no_movement))
+            (<= updating_positions 0)
         )
         :effect (and 
             (not (joint_7_moving))

@@ -11,18 +11,18 @@
 	;;J1 constants
     (= (j1_x) 0.0) 
 	(= (j1_y) 0.0)
-	(= (j1_z) 131.56) ;;L1
+	(= (j1_z) 131.56)
 	(= (l1) 131.56)
 
 	;;J2 variables
-    (= (j2_x) 64.61) ;;L2
+    (= (j2_x) 64.61) 
 	(= (j2_y) 0)
 	(= (j2_z) 131.56)
 	(= (j2_angle) 0.0) ;;Angle between J2->J1 and the x axis
 	(= (l2) 64.610)
 
 	;;J3 variables
-    (= (j3_x) 64.61) ;;L3
+    (= (j3_x) 64.61) 
 	(= (j3_y) 0)
 	(= (j3_z) 241.96)
 	(= (j3_angle) 0.0) ;;Angle between J3->J2 and the z axis
