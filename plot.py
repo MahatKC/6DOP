@@ -44,6 +44,11 @@ def read_joint(line, joint_num):
     return coords, line
 
 
+def print_lenghts(p):
+    for i in range(1, len(p)):
+        length = np.sqrt((p[i][0] - p[i - 1][0]) ** 2 + (p[i][1] - p[i - 1][1]) ** 2 + (p[i][2] - p[i - 1][2]) ** 2)
+        print(f"L{i}: {length}")
+
 plt.ion()
 fig = plt.figure()
 
@@ -101,4 +106,5 @@ else:
             plt.pause(0.0001)
             fig.clf()
 
+        print_lenghts(joints_list)
         time.sleep(5)
