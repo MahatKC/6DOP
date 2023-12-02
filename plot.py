@@ -47,7 +47,7 @@ def read_joint(line, joint_num):
 def print_lenghts(p):
     for i in range(1, len(p)):
         length = np.sqrt((p[i][0] - p[i - 1][0]) ** 2 + (p[i][1] - p[i - 1][1]) ** 2 + (p[i][2] - p[i - 1][2]) ** 2)
-        print(f"L{i}: {length}")
+        print(f"L{i}: {round(length,2)}")
 
 plt.ion()
 fig = plt.figure()
@@ -91,6 +91,7 @@ else:
                 joints_list.append(coords)
 
             ax = fig.add_subplot(111, projection='3d')
+            # ax.view_init(0, 0)  # Change this line to change angle of view. Vertical, horizontal
             ax.set_xlim(min_axis, max_axis)
             ax.set_ylim(min_axis, max_axis)
             ax.set_zlim(0, 493)
