@@ -58,7 +58,7 @@
     (= (j8_x) 84.61) 
 	(= (j8_y) 0)
 	(= (j8_z) 462.76)
-	(= (j8_angle) 0.0) ;;Angle between J8->J7 and the axis that's perpendicular to J7->J6 and parallel to J6->J5
+	(= (j8_angle) 3.14159265) ;;Angle between J8->J7 and the axis that's perpendicular to J7->J6 and parallel to J6->J5
 	(= (l8) 20)
 
 	;;J9 variables
@@ -116,14 +116,16 @@
     ;####### Auxiliary goals to test different behaviors #######
 	;##### Change goal to specific joint angles
 	(and 
-		(<= (j2_angle) 1.58)
-		(>= (j2_angle) 1.57) ;90 degrees
-		(<= (j3_angle) 0.262)
-		(>= (j3_angle) 0.261) ;-90 degrees
-		(<= (j5_angle) -0.261)
-		(>= (j5_angle) -0.262)
-		(<= (j7_angle) 0.262)
-		(>= (j7_angle) 0.261)
+		(<= (j2_angle) 1.571)
+		(>= (j2_angle) 1.570) 
+		(<= (j3_angle) -0.261)
+		(>= (j3_angle) -0.262)
+		(<= (j5_angle) 0.001)
+		(>= (j5_angle) 0.000)
+		(<= (j7_angle) 0.524)
+		(>= (j7_angle) 0.523)
+		(<= (j8_angle) 0.001)
+		(>= (j8_angle) 0.000)
 		;(>= (j7_angle) 0.0872664625997) ;-45 degrees (-90 + 15 + 30)
 		(no_movement)
 	)
