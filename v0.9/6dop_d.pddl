@@ -262,7 +262,6 @@
             ;Further angles using absolute value in relation to world
             (decrease (j5_angle) (* #t w))
             (decrease (j7_angle) (* #t w))
-            (decrease (j9_angle) (* #t w))
         )
 
     )
@@ -297,7 +296,6 @@
             ;Further angles using absolute value in relation to world
             (increase (j5_angle) (* #t w))
             (increase (j7_angle) (* #t w))
-            (increase (j9_angle) (* #t w))
         )
     )
 
@@ -480,7 +478,6 @@
             (assign (updating_positions) 1.0)
             ;Further angles using absolute value in relation to world
             (decrease (j7_angle) (* #t w))
-            (decrease (j9_angle) (* #t w))
         )
 
     )
@@ -514,7 +511,6 @@
             (assign (updating_positions) 1.0)
             ;Further angles using absolute value in relation to world
             (increase (j7_angle) (* #t w))
-            (increase (j9_angle) (* #t w))
         )
     )
 
@@ -665,8 +661,6 @@
             (decrease (j7_angle) (* #t w))
             (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
-            ;Further angles using absolute value in relation to world
-            (decrease (j9_angle) (* #t w))
         )
 
     )
@@ -698,8 +692,6 @@
             (increase (j7_angle) (* #t w))
             (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
-            ;Further angles using absolute value in relation to world
-            (increase (j9_angle) (* #t w))
         )
     )
 
@@ -893,7 +885,7 @@
             ;J9 UPDATE
             (assign (j9_x)
                 (+ (+ j7_x 
-                    (* l9 (* (sin (j9_angle))(sin (j2_angle))))) 
+                    (* l9 (* (sin (j7_angle))(sin (j2_angle))))) 
                     (* l8 
                         (- 
                             (* (cos (j8_angle))(cos (- 0 j2_angle)))
@@ -907,7 +899,7 @@
             )
             (assign (j9_y)
                 (+ (+ j7_y 
-                    (* l9 (* (sin (j9_angle))(cos (j2_angle))))) 
+                    (* l9 (* (sin (j7_angle))(cos (j2_angle))))) 
                     (* l8 
                         (+ 
                             (* (cos (j8_angle))(sin (- 0 j2_angle)))
@@ -921,7 +913,7 @@
             )
             (assign (j9_z)
                 (+ (+ j7_z 
-                    (* l9 (cos (j9_angle))))
+                    (* l9 (cos (j7_angle))))
                     (* l8 (* (sin (j8_angle))(sin (j7_angle))))
                 )
             )
@@ -944,7 +936,154 @@
             (joint_8_finished)
         )
     )
+    
+    ;---------------------------------- J9 --------------------------------------------------------
+    (:action move_j9_clockwise
+        :parameters ()
+        :precondition (and 
+            (no_movement)
+            (not (joint_9_moving))
+            (not (joint_9_finished))
+            (joint_8_finished)
+        )
+        :effect (and 
+            (joint_9_moving)
+            (joint_9_moving_clockwise)
+            (not (no_movement))
+        )
+    )
 
+    (:process moving_j9_clockwise
+        :parameters ()
+        :precondition (and
+            (joint_9_moving)
+            (joint_9_moving_clockwise)
+            (not (no_movement))
+            (<= updating_positions 0)
+        )
+        :effect (and
+            (decrease (j9_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
+            (assign (updating_positions) 1.0)
+        )
+
+    )
+    
+    (:action move_j9_counterclockwise
+        :parameters ()
+        :precondition (and 
+            (no_movement)
+            (not (joint_9_moving))
+            (not (joint_9_finished))
+            (joint_8_finished)
+        )
+        :effect (and 
+            (joint_9_moving)
+            (joint_9_moving_counterclockwise)
+            (not (no_movement))
+        )
+    )
+
+    (:process moving_j9_counterclockwise
+        :parameters ()
+        :precondition (and
+            (joint_9_moving)
+            (joint_9_moving_counterclockwise)
+            (not (no_movement))
+            (<= updating_positions 0)
+        )
+        :effect (and
+            (increase (j9_angle) (* #t w))
+            (increase (total_time) (* #t 1.0))
+            (assign (updating_positions) 1.0)
+        )
+    )
+
+    (:event update_positions_j9_moving
+        :parameters ()
+        :precondition (and
+            (joint_9_moving)
+            (= updating_positions 1.0)
+        )
+        :effect (and
+            ;J9 UPDATE
+            (assign (j9_x)
+                (+ j8_x 
+                    (* l9 
+                        (+ 
+                            (- 
+                                (*
+                                    (* (cos (- 0 j2_angle))(sin (j8_angle)))
+                                    (sin (j9_angle))
+                                )
+                                (*
+                                    (* (sin (- 0 j2_angle))(cos (- 0 j7_angle)))
+                                    (* (cos (j8_angle))(sin (j9_angle)))
+                                )
+                            )
+                            (*
+                                (* (sin (- 0 j2_angle))(sin (- 0 j7_angle)))
+                                (cos (j9_angle))
+                            )
+                        )
+                    )
+                )
+            )
+            (assign (j9_y)
+                (+ j8_y 
+                    (* l9 
+                        (- 
+                            (+ 
+                                (*
+                                    (* (sin (- 0 j2_angle))(sin (j8_angle)))
+                                    (sin (j9_angle))
+                                )
+                                (*
+                                    (* (cos (- 0 j2_angle))(cos (- 0 j7_angle)))
+                                    (* (cos (j8_angle))(sin (j9_angle)))
+                                )
+                            )
+                            (*
+                                (* (cos (- 0 j2_angle))(sin (- 0 j7_angle)))
+                                (cos (j9_angle))
+                            )
+                        )
+                    )
+                )
+            )
+            (assign (j9_z)
+                (+ j8_z
+                    (* l9
+                        (+
+                            (*
+                                (* (sin (- 0 j7_angle))(cos (j8_angle)))
+                                (sin (j9_angle))
+                            )
+                            (* (cos (j7_angle))(cos (j9_angle)))
+                        )
+                    )
+                )
+            )
+            (assign updating_positions 0.0)
+        )
+    )
+
+    (:action stop_j9
+        :parameters ()
+        :precondition (and
+            (joint_9_moving)
+            (not (no_movement))
+            (<= updating_positions 0)
+        )
+        :effect (and 
+            (not (joint_9_moving))
+            (not (joint_9_moving_clockwise))
+            (not (joint_9_moving_counterclockwise))
+            (no_movement)
+            (joint_9_finished)
+        )
+    )
+    
     ;---------------------------- COLLISIONS --------------------------------------------------------
     ;Each collision event has to check if any of the joints has collided, while movement is happening
     (:event floor_collision
