@@ -865,7 +865,7 @@
                 (+ j7_y 
                     (* l8 
                         (+ 
-                            (* (cos (j8_angle))(sin (- 0 j2_angle)))
+                            (* (cos (j8_angle))(sin (j2_angle)))
                             (*  
                                 (* (cos (j7_angle))(sin (j8_angle)))
                                 (cos (- 0 j2_angle))
@@ -904,7 +904,7 @@
                     (* l9 (* (sin (j7_angle))(cos (j2_angle))))) 
                     (* l8 
                         (+ 
-                            (* (cos (j8_angle))(sin (- 0 j2_angle)))
+                            (* (cos (j8_angle))(sin (j2_angle)))
                             (*  
                                 (* (cos (j7_angle))(sin (j8_angle)))
                                 (cos (- 0 j2_angle))

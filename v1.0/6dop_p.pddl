@@ -58,7 +58,7 @@
     (= (j8_x) 84.61) 
 	(= (j8_y) 0)
 	(= (j8_z) 462.76)
-	(= (j8_angle) 3.14159265) ;;Angle between J8->J7 and the axis that's perpendicular to J7->J6 and parallel to J6->J5
+	(= (j8_angle) 0);3.14159265) ;;Angle between J8->J7 and the axis that's perpendicular to J7->J6 and parallel to J6->J5
 	(= (l8) 20)
 
 	;;J9 variables
@@ -81,7 +81,7 @@
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (lambda) 1) ;;Acceptable squared error, can be increased
+	(= (lambda) 9) ;;Acceptable squared error, can be increased
 	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
 	(no_movement)
 	(= (updating_positions) 0)
@@ -116,25 +116,24 @@
 
     ;####### Auxiliary goals to test different behaviors #######
 	;##### Change goal to specific joint angles
-	; (and 
-	; 	(<= (j2_angle) 0.524)
-	; 	(>= (j2_angle) 0.523) 
-	; 	(<= (j3_angle) -0.261)
-	; 	(>= (j3_angle) -0.262)
-	; 	(<= (j5_angle) 0.001)
-	; 	(>= (j5_angle) 0.000)
-	; 	(<= (j7_angle) 0.524)
-	; 	(>= (j7_angle) 0.523)
-	; 	(<= (j8_angle) 0.524)
-	; 	(>= (j8_angle) 0.523)
-	; 	(<= (j9_angle) 0.524)
-	; 	(>= (j9_angle) 0.523) 
-	; 	;(>= (j7_angle) 0.0872664625997) ;-45 degrees (-90 + 15 + 30)
-	; 	(no_movement)
-	; )
+	(and 
+		(<= (j2_angle) 1.571)
+		(>= (j2_angle) 1.570) 
+		(<= (j3_angle) -0.261)
+		(>= (j3_angle) -0.262)
+		(<= (j5_angle) 0.001)
+		(>= (j5_angle) 0.000)
+		(<= (j7_angle) 0.524)
+		(>= (j7_angle) 0.523)
+		(<= (j8_angle) 0.524)
+		(>= (j8_angle) 0.523)
+		(<= (j9_angle) 0.524)
+		(>= (j9_angle) 0.523) 
+		(no_movement)
+	)
 
 	;##### Change goal so that the obstacle is hit
-	(and (joint_hit)(no_movement))
+	; (and (joint_hit)(no_movement))
 
 	; (and (<= j6_x epsilon)
 	; 	(<= j2_x epsilon)
