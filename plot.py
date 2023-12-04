@@ -50,7 +50,7 @@ def print_lenghts(p):
         print(f"L{i}: {round(length,2)}")
 
 plt.ion()
-fig = plt.figure()
+fig = plt.figure(figsize=(7, 7))
 
 MIN_X = 0
 MIN_Y = 0
@@ -80,6 +80,9 @@ else:
 
     min_axis = min(MIN_X, MIN_Y)
     max_axis = max(MAX_X, MAX_Y)
+    if max_axis - min_axis < 493:
+        min_axis -= (493 - (max_axis - min_axis))/2
+        max_axis += (493 - (max_axis - min_axis))/2
 
     with open(file_path) as f:
         lines = f.readlines()
