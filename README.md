@@ -48,11 +48,6 @@ Given the complexity of the problem and its potential implementation in real-wor
 - v0.5 - Add a third joint (J4) that does not move on its own ✅
 - v0.6 - Add all remaining joints (J0, J1, J5, J6, J7, J8, J9) and model their movement according to the previously modelled movements, add M5, create python visualization tool ✅
 - v0.7 - Add M7 ✅
-- v0.8 - Model collision of the joints' segments
-- v0.9 - Add M8
-- v1.0 - Add M9
-- v1.1 - Improve the obstacle's shape to better simulate an actual head
-- v1.2 - Consider the width of the joints' segments to better simulate segment collision
-- v1.3 - Apply the output of the planner to the 3D Slicer simulator
-- v2.0 - Fully integrate the planner to 3D Slicer so the planning takes place from a position set at the simulator and outputs a set of actions that can be visualized on 3D Slicer
-- v3.0 - Integrate the planner with ROS (Robot Operating System) so that it moves the actual MyCobot robotic arm
+- v0.8 - Add M8 ✅
+- v0.9 - Add M9 ✅
+- v1.0 - Model collision of the joints' segments ✅
