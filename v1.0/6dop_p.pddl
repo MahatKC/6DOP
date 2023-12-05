@@ -69,9 +69,9 @@
 	(= (l9) 30)
 
 	;;Target
-	(= (target_x) 128)
-	(= (target_y) 71)
-	(= (target_z) 155)
+	(= (target_x) 59.5)
+	(= (target_y) 74.5)
+	(= (target_z) 465.2)
 
 	;;Head is modelled as a sphere
 	(= (sphere_center_x) 261.0)
@@ -81,7 +81,7 @@
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (lambda) 9) ;;Acceptable squared error, can be increased
+	(= (lambda) 1) ;;Acceptable squared error, can be increased
 	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
 	(no_movement)
 	(= (updating_positions) 0)
