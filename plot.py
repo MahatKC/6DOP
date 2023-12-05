@@ -63,6 +63,8 @@ if len(sys.argv) > 1:
         folder = ""
 else:
     folder = ""
+
+has_target = False
 if len(sys.argv) > 2:
     has_target = True
     target = [float(x) for x in sys.argv[2:5]]
