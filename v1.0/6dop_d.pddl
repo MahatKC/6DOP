@@ -118,7 +118,6 @@
         (target_x)
         (target_y)
         (target_z)
-        (total_time)
         (lambda)
         (epsilon)
         (w)
@@ -158,7 +157,6 @@
         )
         :effect (and
             (decrease (j2_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
         )
     )
@@ -187,7 +185,6 @@
         )
         :effect (and
             (increase (j2_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
         )
     )
@@ -259,7 +256,6 @@
         )
         :effect (and
             (decrease (j3_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
             ;Further angles using absolute value in relation to world
             (decrease (j5_angle) (* #t w))
@@ -293,7 +289,6 @@
         )
         :effect (and
             (increase (j3_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
             ;Further angles using absolute value in relation to world
             (increase (j5_angle) (* #t w))
@@ -476,7 +471,6 @@
         )
         :effect (and
             (decrease (j5_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
             ;Further angles using absolute value in relation to world
             (decrease (j7_angle) (* #t w))
@@ -509,7 +503,6 @@
         )
         :effect (and
             (increase (j5_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
             ;Further angles using absolute value in relation to world
             (increase (j7_angle) (* #t w))
@@ -661,7 +654,6 @@
         )
         :effect (and
             (decrease (j7_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
         )
 
@@ -692,7 +684,6 @@
         )
         :effect (and
             (increase (j7_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
         )
     )
@@ -804,7 +795,6 @@
         )
         :effect (and
             (decrease (j8_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
         )
 
@@ -835,7 +825,6 @@
         )
         :effect (and
             (increase (j8_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
         )
     )
@@ -965,7 +954,6 @@
         )
         :effect (and
             (decrease (j9_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
         )
 
@@ -996,7 +984,6 @@
         )
         :effect (and
             (increase (j9_angle) (* #t w))
-            (increase (total_time) (* #t 1.0))
             (assign (updating_positions) 1.0)
         )
     )

@@ -5,9 +5,6 @@
   )
 
   (:init
-    ;Metric variable (not currently being used)
-    (= (total_time) 0.0)
-
 	;;J1 constants
     (= (j1_x) 0.0) 
 	(= (j1_y) 0.0)
@@ -69,11 +66,14 @@
 	(= (l9) 30)
 
 	;;Target
-
+	;; 2 movements
+	(= (target_x) -93.49)
+	(= (target_y) 84.61)
+	(= (target_z) 480.45)
 	;;all movements
-	(= (target_x) 59.53)
-	(= (target_y) 39.79)
-	(= (target_z) 455.2)
+	; (= (target_x) 59.53)
+	; (= (target_y) 39.79)
+	; (= (target_z) 455.2)
 
 	;;Head is modelled as a sphere
 	(= (sphere_center_x) 261.0)
@@ -83,7 +83,7 @@
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (lambda) 400) ;;Acceptable squared error, can be increased
+	(= (lambda) 100) ;;Acceptable squared error, can be increased
 	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
 	(no_movement)
 	(= (updating_positions) 0)
@@ -99,43 +99,43 @@
   )
 
   (:goal
-	; (and 
-	; 	;Desired joint must be close to target (closeness determined by lambda)
-	; 	(<= 
-	; 		(+ (^ (- j9_x target_x) 2)
-	; 		   (+ (^ (- j9_y target_y) 2)
-	; 		      (^ (- j9_z target_z) 2)
-	; 		   )
-	; 		)
-	; 		(lambda)
-	; 	)
-	; 	;No movement must be happening (stop action must have been called)
-	; 	(no_movement)
-	; 	;No collision has happened
-	; 	(not (head_hit))
-	; 	(not (floor_hit))
-	; 	(not (joint_hit))
-	; )
-
-    ;####### Auxiliary goals to test different behaviors #######
-	;##### Change goal to specific joint angles
 	(and 
-		(<= (j2_angle) 1.571)
-		(>= (j2_angle) 1.570) 
-		(<= (j3_angle) -0.261)
-		(>= (j3_angle) -0.262)
-		(<= (j5_angle) 0.001)
-		(>= (j5_angle) 0.000)
-		(<= (j7_angle) 0.524)
-		(>= (j7_angle) 0.523)
-		(<= (j8_angle) 0.524)
-		(>= (j8_angle) 0.523)
-		(<= (j9_angle) 0.524)
-		(>= (j9_angle) 0.523) 
+		;Desired joint must be close to target (closeness determined by lambda)
+		(<= 
+			(+ (^ (- j9_x target_x) 2)
+			   (+ (^ (- j9_y target_y) 2)
+			      (^ (- j9_z target_z) 2)
+			   )
+			)
+			(lambda)
+		)
+		;No movement must be happening (stop action must have been called)
 		(no_movement)
+		;No collision has happened
 		(not (head_hit))
 		(not (floor_hit))
 		(not (joint_hit))
+	)
+
+    ;####### Auxiliary goals to test different behaviors #######
+	;##### Change goal to specific joint angles
+	; (and 
+	; 	(<= (j2_angle) 1.571)
+	; 	(>= (j2_angle) 1.570) 
+	; 	(<= (j3_angle) -0.261)
+	; 	(>= (j3_angle) -0.262)
+		; (<= (j5_angle) 0.001)
+		; (>= (j5_angle) 0.000)
+		; (<= (j7_angle) 0.524)
+		; (>= (j7_angle) 0.523)
+		; (<= (j8_angle) 0.524)
+		; (>= (j8_angle) 0.523)
+		; (<= (j9_angle) 0.524)
+		; (>= (j9_angle) 0.523) 
+		; (no_movement)
+		; (not (head_hit))
+		; (not (floor_hit))
+		; (not (joint_hit))
 	)
 
 	;##### Change goal so that the obstacle is hit
@@ -150,7 +150,4 @@
 	; 	(no_movement)
 	; )
   )
-
-  ;Set a metric (hasn't had any effect yet, might have an effect in the future)
-  ;(:metric minimize (total_time))
 )
