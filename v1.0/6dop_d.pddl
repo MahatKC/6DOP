@@ -119,7 +119,6 @@
         (target_y)
         (target_z)
         (lambda)
-        (epsilon)
         (w)
         (updating_positions)
 
