@@ -59,7 +59,7 @@ MAX_Y = 0
 
 if len(sys.argv) > 1:
     folder = str(sys.argv[1])
-    if folder == "_": 
+    if folder == "_":
         folder = ""
 else:
     folder = ""
