@@ -58,7 +58,7 @@
     (= (j8_x) 84.61) 
 	(= (j8_y) 0)
 	(= (j8_z) 462.76)
-	(= (j8_angle) 0);3.14159265) ;;Angle between J8->J7 and the axis that's perpendicular to J7->J6 and parallel to J6->J5
+	(= (j8_angle) 3.14159265) ;;Angle between J8->J7 and the axis that's perpendicular to J7->J6 and parallel to J6->J5
 	(= (l8) 20)
 
 	;;J9 variables
@@ -69,9 +69,9 @@
 	(= (l9) 30)
 
 	;;Target
-	(= (target_x) 59.5)
-	(= (target_y) 74.5)
-	(= (target_z) 465.2)
+	(= (target_x) -93.5)
+	(= (target_y) 84.6)
+	(= (target_z) 480.5)
 
 	;;Head is modelled as a sphere
 	(= (sphere_center_x) 261.0)
@@ -81,7 +81,7 @@
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (lambda) 1) ;;Acceptable squared error, can be increased
+	(= (lambda) 64) ;;Acceptable squared error, can be increased
 	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
 	(no_movement)
 	(= (updating_positions) 0)
@@ -112,6 +112,7 @@
 	; 	;No collision has happened
 	; 	(not (head_hit))
 	; 	(not (floor_hit))
+	; 	(not (joint_hit))
 	; )
 
     ;####### Auxiliary goals to test different behaviors #######
@@ -121,7 +122,7 @@
 		(>= (j2_angle) 1.570) 
 		(<= (j3_angle) -0.261)
 		(>= (j3_angle) -0.262)
-		(<= (j5_angle) 0.001)
+		(<= (j5_angle) 0.001).
 		(>= (j5_angle) 0.000)
 		(<= (j7_angle) 0.524)
 		(>= (j7_angle) 0.523)

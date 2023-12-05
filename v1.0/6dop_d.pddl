@@ -854,7 +854,7 @@
                         (- 
                             (* (cos (j8_angle))(cos (- 0 j2_angle)))
                             (*  
-                                (* (cos (j7_angle))(sin (j8_angle)))
+                                (* (cos (- 0 j7_angle))(sin (j8_angle)))
                                 (sin (- 0 j2_angle))
                             )
                         )
@@ -865,9 +865,9 @@
                 (+ j7_y 
                     (* l8 
                         (+ 
-                            (* (cos (j8_angle))(sin (j2_angle)))
+                            (* (cos (j8_angle))(sin (- 0 j2_angle)))
                             (*  
-                                (* (cos (j7_angle))(sin (j8_angle)))
+                                (* (cos (- 0 j7_angle))(sin (j8_angle)))
                                 (cos (- 0 j2_angle))
                             )
                         )
@@ -879,7 +879,7 @@
                     (* l8 
                         (* 
                             (sin (j8_angle))
-                            (sin (j7_angle))
+                            (sin (- 0 j7_angle))
                         )
                     )
                 )
@@ -892,7 +892,7 @@
                         (- 
                             (* (cos (j8_angle))(cos (- 0 j2_angle)))
                             (*  
-                                (* (cos (j7_angle))(sin (j8_angle)))
+                                (* (cos (- 0 j7_angle))(sin (j8_angle)))
                                 (sin (- 0 j2_angle))
                             )
                         )
@@ -904,9 +904,9 @@
                     (* l9 (* (sin (j7_angle))(cos (j2_angle))))) 
                     (* l8 
                         (+ 
-                            (* (cos (j8_angle))(sin (j2_angle)))
+                            (* (cos (j8_angle))(sin (- 0 j2_angle)))
                             (*  
-                                (* (cos (j7_angle))(sin (j8_angle)))
+                                (* (cos (- 0 j7_angle))(sin (j8_angle)))
                                 (cos (- 0 j2_angle))
                             )
                         )
@@ -916,7 +916,7 @@
             (assign (j9_z)
                 (+ (+ j7_z 
                     (* l9 (cos (j7_angle))))
-                    (* l8 (* (sin (j8_angle))(sin (j7_angle))))
+                    (* l8 (* (sin (j8_angle))(sin (- 0 j7_angle))))
                 )
             )
             (assign updating_positions 0.0)
@@ -1554,8 +1554,8 @@
         :parameters ()
         :precondition (and
             (or 
-                (>= (j2_angle) 6.28318530717958648)
-                (<= (j2_angle) -6.28318530717958648)
+                (>= (j2_angle) 6.283)
+                (<= (j2_angle) -6.283)
             )
         )
         :effect (and
@@ -1567,8 +1567,8 @@
         :parameters ()
         :precondition (and
             (or 
-                (>= (j3_angle) 6.28318530717958648)
-                (<= (j3_angle) -6.28318530717958648)
+                (>= (j3_angle) 6.283)
+                (<= (j3_angle) -6.283)
             )
         )
         :effect (and
@@ -1580,8 +1580,8 @@
         :parameters ()
         :precondition (and
             (or 
-                (>= (j5_angle) 6.28318530717958648)
-                (<= (j5_angle) -6.28318530717958648)
+                (>= (j5_angle) 6.283)
+                (<= (j5_angle) -6.283)
             )
         )
         :effect (and
@@ -1593,8 +1593,8 @@
         :parameters ()
         :precondition (and
             (or 
-                (>= (j7_angle) 6.28318530717958648)
-                (<= (j7_angle) -6.28318530717958648)
+                (>= (j7_angle) 6.283)
+                (<= (j7_angle) -6.283)
             )
         )
         :effect (and
@@ -1606,8 +1606,8 @@
         :parameters ()
         :precondition (and
             (or 
-                (>= (j8_angle) 6.28318530717958648)
-                (<= (j8_angle) -6.28318530717958648)
+                (>= (j8_angle) 6.283)
+                (<= (j8_angle) -6.283)
             )
         )
         :effect (and
@@ -1619,8 +1619,8 @@
         :parameters ()
         :precondition (and
             (or 
-                (>= (j9_angle) 6.28318530717958648)
-                (<= (j9_angle) -6.28318530717958648)
+                (>= (j9_angle) 6.283)
+                (<= (j9_angle) -6.283)
             )
         )
         :effect (and
