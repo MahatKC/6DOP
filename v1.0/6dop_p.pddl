@@ -15,14 +15,14 @@
     (= (j2_x) 64.61) 
 	(= (j2_y) 0)
 	(= (j2_z) 131.56)
-	(= (j2_angle) 0.0) ;;Angle between J2->J1 and the x axis
+	(= (j2_angle) 0.0)
 	(= (l2) 64.610)
 
 	;;J3 variables
     (= (j3_x) 64.61) 
 	(= (j3_y) 0)
 	(= (j3_z) 241.96)
-	(= (j3_angle) 0.0) ;;Angle between J3->J2 and the z axis
+	(= (j3_angle) 0.0)
 	(= (l3) 110.4)
 
 	;;J4 variables
@@ -35,7 +35,7 @@
     (= (j5_x) 0.0) 
 	(= (j5_y) 0.0)
 	(= (j5_z) 352.36)
-	(= (j5_angle) 0.0) ;;Angle between J5->J4 and J3->J2
+	(= (j5_angle) 0.0)
 	(= (l5) 110.4)
 
 	;;J6 variables
@@ -48,32 +48,32 @@
     (= (j7_x) 64.61) 
 	(= (j7_y) 0)
 	(= (j7_z) 462.76)
-	(= (j7_angle) 0.0) ;;Angle between J7->J6 and J5->J4
+	(= (j7_angle) 0.0) 
 	(= (l7) 110.4)
 
 	;;J8 variables
     (= (j8_x) 84.61) 
 	(= (j8_y) 0)
 	(= (j8_z) 462.76)
-	(= (j8_angle) 3.14159265) ;;Angle between J8->J7 and the axis that's perpendicular to J7->J6 and parallel to J6->J5
+	(= (j8_angle) 3.14159265) 
 	(= (l8) 20)
 
 	;;J9 variables
     (= (j9_x) 84.61) 
 	(= (j9_y) 0)
 	(= (j9_z) 492.76)
-	(= (j9_angle) 0.0) ;;Angle between J9->J8 and J7->J6
+	(= (j9_angle) 0.0)
 	(= (l9) 30)
 
 	;;Target
 	;; 2 movements
-	(= (target_x) -93.49)
-	(= (target_y) 84.61)
-	(= (target_z) 480.45)
+	; (= (target_x) -93.49)
+	; (= (target_y) 84.61)
+	; (= (target_z) 480.45)
 	;;all movements
-	; (= (target_x) 59.53)
-	; (= (target_y) 39.79)
-	; (= (target_z) 455.2)
+	(= (target_x) 59.53)
+	(= (target_y) 39.79)
+	(= (target_z) 455.2)
 
 	;;Head is modelled as a sphere
 	(= (sphere_center_x) 261.0)
@@ -83,8 +83,7 @@
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (lambda) 100) ;;Acceptable squared error, can be increased
-	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
+	(= (lambda) 625) ;;Acceptable squared error, can be increased
 	(no_movement)
 	(= (updating_positions) 0)
 	(= (squared_joint_radius) 4)
@@ -118,36 +117,35 @@
 	)
 
     ;####### Auxiliary goals to test different behaviors #######
+
 	;##### Change goal to specific joint angles
+	;Inequalities are used to assist the planner
 	; (and 
 	; 	(<= (j2_angle) 1.571)
 	; 	(>= (j2_angle) 1.570) 
 	; 	(<= (j3_angle) -0.261)
 	; 	(>= (j3_angle) -0.262)
-		; (<= (j5_angle) 0.001)
-		; (>= (j5_angle) 0.000)
-		; (<= (j7_angle) 0.524)
-		; (>= (j7_angle) 0.523)
-		; (<= (j8_angle) 0.524)
-		; (>= (j8_angle) 0.523)
-		; (<= (j9_angle) 0.524)
-		; (>= (j9_angle) 0.523) 
-		; (no_movement)
-		; (not (head_hit))
-		; (not (floor_hit))
-		; (not (joint_hit))
-	)
+	; 	(<= (j5_angle) 0.001)
+	; 	(>= (j5_angle) 0.000)
+	; 	(<= (j7_angle) 0.524)
+	; 	(>= (j7_angle) 0.523)
+	; 	(<= (j8_angle) 0.524)
+	; 	(>= (j8_angle) 0.523)
+	; 	(<= (j9_angle) 0.524)
+	; 	(>= (j9_angle) 0.523) 
+	; 	(no_movement)
+	; 	(not (head_hit))
+	; 	(not (floor_hit))
+	; 	(not (joint_hit))
+	; )
 
-	;##### Change goal so that the obstacle is hit
+	;##### Change goal so that the robot hits itself
 	; (and (joint_hit)(no_movement))
 
-	; (and (<= j6_x epsilon)
-	; 	(<= j2_x epsilon)
-	; 	(<= j3_x epsilon)
-	; 	(<= j7_x epsilon)
-	; 	(<= j8_x epsilon)
-	; 	(<= j9_x epsilon)
-	; 	(no_movement)
-	; )
+	;##### Change goal so that the robot hits the floor
+	; (and (floor_hit)(no_movement))
+	
+	;##### Change goal so that the robot hits the head
+	; (and (head_hit)(no_movement))
   )
 )
