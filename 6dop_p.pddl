@@ -1,0 +1,147 @@
+(define (problem six_dop_pro_v0_6)
+  (:domain six_dop_dom_v0_6)
+  (:objects
+    
+  )
+
+  (:init
+    ;Metric variable (not currently being used)
+    (= (total_time) 0.0)
+
+	;;J1 constants
+    (= (j1_x) 0.0) 
+	(= (j1_y) 0.0)
+	(= (j1_z) 131.56) ;;L1
+	(= (l1) 131.56)
+
+	;;J2 variables
+    (= (j2_x) 64.61) ;;L2
+	(= (j2_y) 0)
+	(= (j2_z) 131.56)
+	(= (j2_angle) 0.0) ;;Angle between J2->J1 and the x axis
+	(= (l2) 64.610)
+
+	;;J3 variables
+    (= (j3_x) 64.61) ;;L3
+	(= (j3_y) 0)
+	(= (j3_z) 241.96)
+	(= (j3_angle) 0.0) ;;Angle between J3->J2 and the z axis
+	(= (l3) 110.4)
+
+	;;J4 variables
+    (= (j4_x) 0.0) ;;L4
+	(= (j4_y) 0.0)
+	(= (j4_z) 241.96)
+	(= (l4) 64.610)
+
+	;;J5 variables
+    (= (j5_x) 0.0) 
+	(= (j5_y) 0.0)
+	(= (j5_z) 337.96)
+	(= (j5_angle) 0.0) ;;Angle between J5->J4 and J3->J2
+	(= (l5) 96)
+
+	;;J6 variables
+    (= (j6_x) 64.61) 
+	(= (j6_y) 0)
+	(= (j6_z) 337.96)
+	(= (l6) 64.61)
+
+	;;J7 variables
+    (= (j7_x) 64.61) 
+	(= (j7_y) 0)
+	(= (j7_z) 411.14)
+	(= (j7_angle) 0.0) ;;Angle between J7->J6 and J5->J4
+	(= (l7) 73.18)
+
+	;;J8 variables
+    (= (j8_x) 113.21) 
+	(= (j8_y) 0)
+	(= (j8_z) 411.14)
+	(= (j8_angle) 0.0) ;;Angle between J8->J7 and the axis that's perpendicular to J7->J6 and parallel to J6->J5
+	(= (l8) 48.6)
+
+	;;J9 variables
+    (= (j9_x) 113.21) 
+	(= (j9_y) 0)
+	(= (j9_z) 512.28)
+	(= (j9_angle) 0.0) ;;Angle between J9->J8 and J7->J6
+	(= (l9) 101.14)
+
+	;;Target
+	(= (target_x) 270.64373779296875)
+	(= (target_y) -87.27857971191406)
+	(= (target_z) 122.38709259033203)
+
+	;;Head is modelled as a sphere
+	(= (sphere_center_x) 327.4125045629077)
+	(= (sphere_center_y) -186.3395348633431)
+	(= (sphere_center_z) 27.18249836769442)
+	(= (squared_sphere_radius) 22500.0) ;;r², avoids needing to calculate the square of the radius for every collision check
+	
+	;;Global goal conditions
+	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
+	(= (lambda)250) ;;Acceptable squared error, can be increased
+	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
+	(no_movement)
+	(= (updating_positions) 0)
+	(= (squared_joint_radius) 32)
+
+	;;Sums of lengths to speed up computations
+	(= (l3_l5) 206.4)
+	(= (l3_l5_l7) 279.58)
+	(= (l3_l5_l7_l9) 380.72)
+	(= (l5_l7) 169.18)
+	(= (l5_l7_l9) 270.32)
+	(= (l7_l9) 174.32)
+  )
+
+  (:goal
+	(and 
+		;Desired joint must be close to target (closeness determined by lambda)
+		(<= 
+			(+ (^ (- j9_x target_x) 2)
+			   (+ (^ (- j9_y target_y) 2)
+			      (^ (- j9_z target_z) 2)
+			   )
+			)
+			(lambda)
+		)
+		;No movement must be happening (stop action must have been called)
+		(no_movement)
+		;No collision has happened
+		(not (head_hit))
+		(not (floor_hit))
+	)
+
+    ;####### Auxiliary goals to test different behaviors #######
+	;##### Change goal to specific joint angles
+	; (and 
+	; 	(<= (j2_angle) 1.58)
+	; 	(>= (j2_angle) 1.57) ;90 degrees
+	; 	(<= (j3_angle) 0.262)
+	; 	(>= (j3_angle) 0.261) ;-90 degrees
+	; 	(<= (j5_angle) -0.261)
+	; 	(>= (j5_angle) -0.262)
+	; 	(<= (j7_angle) 0.262)
+	; 	(>= (j7_angle) 0.261)
+	; 	;(>= (j7_angle) 0.0872664625997) ;-45 degrees (-90 + 15 + 30)
+	; 	(no_movement)
+	; )
+
+	;##### Change goal so that the obstacle is hit
+	; (and (head_hit)(no_movement))
+
+	; (and (<= j6_x epsilon)
+	; 	(<= j2_x epsilon)
+	; 	(<= j3_x epsilon)
+	; 	(<= j7_x epsilon)
+	; 	(<= j8_x epsilon)
+	; 	(<= j9_x epsilon)
+	; 	(no_movement)
+	; )
+  )
+
+  ;Set a metric (hasn't had any effect yet, might have an effect in the future)
+  ;(:metric minimize (total_time))
+)
