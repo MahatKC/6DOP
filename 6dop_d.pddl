@@ -391,13 +391,13 @@
             )
             ;J8 UPDATE
             (assign (j8_x)
-                (+ (+ j2_x (* l8 (cos (+ j2_angle 1.57)))) (
+                (+ (+ j2_x (* l8 (cos (j2_angle)))) (
                     * (cos (+ j2_angle 1.57))
                     (* l3_l5_l7 (sin (j3_angle)))
                 ))
             )
             (assign (j8_y)
-                (+ (+ j2_y (* l8 (sin (+ j2_angle 1.57)))) (
+                (+ (+ j2_y (* l8 (sin (j2_angle)))) (
                     * (sin (+ j2_angle 1.57))
                     (* l3_l5_l7 (sin (j3_angle)))
                 ))
@@ -409,13 +409,13 @@
             )
             ;J9 UPDATE
             (assign (j9_x)
-                (+ (+ j2_x (* l8 (cos (+ j2_angle 1.57)))) (
+                (+ (+ j2_x (* l8 (cos (j2_angle)))) (
                     * (cos (+ j2_angle 1.57))
                     (* l3_l5_l7_l9 (sin (j3_angle)))
                 ))
             )
             (assign (j9_y)
-                (+ (+ j2_y (* l8 (sin (+ j2_angle 1.57)))) (
+                (+ (+ j2_y (* l8 (sin (j2_angle)))) (
                     * (sin (+ j2_angle 1.57))
                     (* l3_l5_l7_l9 (sin (j3_angle)))
                 ))
@@ -519,14 +519,14 @@
             ;J5 UPDATE
             (assign (j5_x)
                 (+ j4_x 
-                    (* (sin j2_angle)
+                    (* (cos (+ j2_angle 1.57))
                         (* l5 (sin (j5_angle)))
                     )
                 )
             )
             (assign (j5_y)
                 (+ j4_y 
-                    (* (cos j2_angle)
+                    (* (sin (+ j2_angle 1.57))
                         (* l5 (sin (j5_angle)))
                     )
                 )
@@ -539,13 +539,13 @@
             ;J6 UPDATE
             (assign (j6_x)
                 (+ j3_x (
-                    * (sin j2_angle)
+                    * (cos (+ j2_angle 1.57))
                     (* l5 (sin (j5_angle)))
                 ))
             )
             (assign (j6_y)
                 (+ j3_y (
-                    * (cos j2_angle)
+                    * (sin (+ j2_angle 1.57))
                     (* l5 (sin (j5_angle)))
                 ))
             )
@@ -557,13 +557,13 @@
             ;J7 UPDATE
             (assign (j7_x)
                 (+ j3_x (
-                    * (sin j2_angle)
+                    * (cos (+ j2_angle 1.57))
                     (* l5_l7 (sin (j5_angle)))
                 ))
             )
             (assign (j7_y)
                 (+ j3_y (
-                    * (cos j2_angle)
+                    * (sin (+ j2_angle 1.57))
                     (* l5_l7 (sin (j5_angle)))
                 ))
             )
@@ -574,14 +574,16 @@
             )
             ;J8 UPDATE
             (assign (j8_x)
-                (+ (+ j3_x (* l8 (cos j2_angle))) (
-                    * (sin j2_angle)
-                    (* l5_l7 (sin (j5_angle)))
-                ))
+                (+ (+ j3_x (* l8 (cos j2_angle))) 
+                    (
+                        * (cos (+ j2_angle 1.57))
+                        (* l5_l7 (sin (j5_angle)))
+                    )
+                )
             )
             (assign (j8_y)
                 (+ (+ j3_y (* l8 (sin j2_angle))) (
-                    * (cos j2_angle)
+                    * (sin (+ j2_angle 1.57))
                     (* l5_l7 (sin (j5_angle)))
                 ))
             )
@@ -593,13 +595,13 @@
             ;J9 UPDATE
             (assign (j9_x)
                 (+ (+ j3_x (* l8 (cos j2_angle))) (
-                    * (sin j2_angle)
+                    * (cos (+ j2_angle 1.57))
                     (* l5_l7_l9 (sin (j5_angle)))
                 ))
             )
             (assign (j9_y)
                 (+ (+ j3_y (* l8 (sin j2_angle))) (
-                    * (cos j2_angle)
+                    * (sin (+ j2_angle 1.57))
                     (* l5_l7_l9 (sin (j5_angle)))
                 ))
             )
@@ -698,13 +700,13 @@
             ;J7 UPDATE
             (assign (j7_x)
                 (+ j6_x (
-                    * (sin j2_angle)
+                    * (cos (+ j2_angle 1.57))
                     (* l7 (sin (j7_angle)))
                 ))
             )
             (assign (j7_y)
                 (+ j6_y (
-                    * (cos j2_angle)
+                    * (sin (+ j2_angle 1.57))
                     (* l7 (sin (j7_angle)))
                 ))
             )
@@ -716,13 +718,13 @@
             ;J8 UPDATE
             (assign (j8_x)
                 (+ (+ j6_x (* l8 (cos j2_angle))) (
-                    * (sin j2_angle)
+                    * (cos (+ j2_angle 1.57))
                     (* l7 (sin (j7_angle)))
                 ))
             )
             (assign (j8_y)
                 (+ (+ j6_y (* l8 (sin j2_angle))) (
-                    * (cos j2_angle)
+                    * (sin (+ j2_angle 1.57))
                     (* l7 (sin (j7_angle)))
                 ))
             )
@@ -734,13 +736,13 @@
             ;J9 UPDATE
             (assign (j9_x)
                 (+ (+ j6_x (* l8 (cos j2_angle))) (
-                    * (sin j2_angle)
+                    * (cos (+ j2_angle 1.57))
                     (* l7_l9 (sin (j7_angle)))
                 ))
             )
             (assign (j9_y)
                 (+ (+ j6_y (* l8 (sin j2_angle))) (
-                    * (cos j2_angle)
+                    * (sin (+ j2_angle 1.57))
                     (* l7_l9 (sin (j7_angle)))
                 ))
             )
