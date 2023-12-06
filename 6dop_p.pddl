@@ -81,7 +81,7 @@
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (lambda)200) ;;Acceptable squared error, can be increased
+	(= (lambda) 12) ;;Acceptable squared error, can be increased
 	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
 	(no_movement)
 	(= (updating_positions) 0)
@@ -97,42 +97,42 @@
   )
 
   (:goal
-	; (and 
-	; 	;Desired joint must be close to target (closeness determined by lambda)
-	; 	(<= 
-	; 		(+ (^ (- j9_x target_x) 2)
-	; 		   (+ (^ (- j9_y target_y) 2)
-	; 		      (^ (- j9_z target_z) 2)
-	; 		   )
-	; 		)
-	; 		(lambda)
-	; 	)
-	; 	;No movement must be happening (stop action must have been called)
-	; 	(no_movement)
-	; 	;No collision has happened
-	; 	(not (head_hit))
-	; 	(not (floor_hit))
-	; 	(not (joint_hit))
-	; )
+	(and 
+		;Desired joint must be close to target (closeness determined by lambda)
+		(<= 
+			(+ (^ (- j9_x target_x) 2)
+			   (+ (^ (- j9_y target_y) 2)
+			      (^ (- j9_z target_z) 2)
+			   )
+			)
+			(lambda)
+		)
+		;No movement must be happening (stop action must have been called)
+		(no_movement)
+		;No collision has happened
+		(not (head_hit))
+		(not (floor_hit))
+		(not (joint_hit))
+	)
 
     ;####### Auxiliary goals to test different behaviors #######
 	;##### Change goal to specific joint angles
-	(and 
-		(<= (j2_angle) -0.890)
-		(>= (j2_angle) -0.891) 
-		(<= (j3_angle) 0.664)
-		(>= (j3_angle) 0.663)
-		(<= (j5_angle) -0.261)
-		(>= (j5_angle) -0.262)
-		(<= (j7_angle) 0.262)
-		(>= (j7_angle) 0.261)
-		(<= (j8_angle) -3.141)
-		(>= (j8_angle) -3.142)
-		(<= (j9_angle) 0.262)
-		(>= (j9_angle) 0.261)
-		;(>= (j7_angle) 0.0872664625997) ;-45 degrees (-90 + 15 + 30)
-		; (no_movement)
-	)
+	; (and 
+	; 	(<= (j2_angle) -0.890)
+	; 	(>= (j2_angle) -0.891) 
+	; 	(<= (j3_angle) 0.664)
+	; 	(>= (j3_angle) 0.663)
+	; 	(<= (j5_angle) -0.261)
+	; 	(>= (j5_angle) -0.262)
+	; 	(<= (j7_angle) 0.262)
+	; 	(>= (j7_angle) 0.261)
+	; 	(<= (j8_angle) -3.141)
+	; 	(>= (j8_angle) -3.142)
+	; 	(<= (j9_angle) 0.262)
+	; 	(>= (j9_angle) 0.261)
+	; 	;(>= (j7_angle) 0.0872664625997) ;-45 degrees (-90 + 15 + 30)
+	; 	; (no_movement)
+	; )
 
 	;##### Change goal so that the obstacle is hit
 	; (and (head_hit)(no_movement))

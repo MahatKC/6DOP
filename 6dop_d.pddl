@@ -878,7 +878,7 @@
             ;J9 UPDATE
             (assign (j9_x)
                 (+ (+ j7_x 
-                    (* l9 (* (sin (j7_angle))(sin (+ j2_angle 1.57))))) 
+                    (* l9 (* (sin (j7_angle))(cos (+ j2_angle 1.57))))) 
                     (* l8 
                         (- 
                             (* (cos (j8_angle))(cos j2_angle))
@@ -892,7 +892,7 @@
             )
             (assign (j9_y)
                 (+ (+ j7_y 
-                    (* l9 (* (sin (j7_angle))(cos (+ j2_angle 1.57))))) 
+                    (* l9 (* (sin (j7_angle))(sin (+ j2_angle 1.57))))) 
                     (* l8 
                         (+ 
                             (* (cos (j8_angle))(sin j2_angle))
