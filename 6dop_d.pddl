@@ -1089,7 +1089,7 @@
                 (<= j6_z 0.0)
                 (<= j7_z 0.0)
                 (<= j8_z 0.0)
-                (<= j9_z 0.0)
+                ; (<= j9_z 0.0)
             )
         )
         :effect (and
@@ -1300,33 +1300,33 @@
         )
     )
 
-    (:event head_collision_j9
-        :parameters ()
-        :precondition (and
-            (not (no_movement))
-            ;J9 Collision
-            (<= 
-                (+ 
-                    (^ (- j9_x sphere_center_x) 2)
-                    (+ (^ (- j9_y sphere_center_y) 2)
-                    (^ (- j9_z sphere_center_z) 2)
-                    )
-                )
-                (squared_sphere_radius)
-            )
-        )
-        :effect (and
-            ;;Stop any and all movement happening
-            (no_movement)
-            (not (joint_2_moving))
-            (not (joint_3_moving))
-            (not (joint_5_moving))
-            (not (joint_7_moving))
-            (not (joint_8_moving))
-            (not (joint_9_moving))
-            (head_hit)
-        )
-    )
+    ; (:event head_collision_j9
+    ;     :parameters ()
+    ;     :precondition (and
+    ;         (not (no_movement))
+    ;         ;J9 Collision
+    ;         (<= 
+    ;             (+ 
+    ;                 (^ (- j9_x sphere_center_x) 2)
+    ;                 (+ (^ (- j9_y sphere_center_y) 2)
+    ;                 (^ (- j9_z sphere_center_z) 2)
+    ;                 )
+    ;             )
+    ;             (squared_sphere_radius)
+    ;         )
+    ;     )
+    ;     :effect (and
+    ;         ;;Stop any and all movement happening
+    ;         (no_movement)
+    ;         (not (joint_2_moving))
+    ;         (not (joint_3_moving))
+    ;         (not (joint_5_moving))
+    ;         (not (joint_7_moving))
+    ;         (not (joint_8_moving))
+    ;         (not (joint_9_moving))
+    ;         (head_hit)
+    ;     )
+    ; )
 
     (:event joint_collision_j5
         :parameters ()
@@ -1466,75 +1466,75 @@
         )
     )
 
-    (:event joint_collision_j9
-        :parameters ()
-        :precondition (and
-            (not (no_movement))
-            (or
-                ;J9&J1 Collision
-                (<= 
-                    (+ 
-                        (^ (- j9_x j1_x) 2)
-                        (+ (^ (- j9_y j1_y) 2)
-                        (^ (- j9_z j1_z) 2)
-                        )
-                    )
-                    (squared_joint_radius)
-                )
-                ;J9&J2 Collision
-                (<= 
-                    (+ 
-                        (^ (- j9_x j2_x) 2)
-                        (+ (^ (- j9_y j2_y) 2)
-                        (^ (- j9_z j2_z) 2)
-                        )
-                    )
-                    (squared_joint_radius)
-                )
-                ;J9&J3 Collision
-                (<= 
-                    (+ 
-                        (^ (- j9_x j3_x) 2)
-                        (+ (^ (- j9_y j3_y) 2)
-                        (^ (- j9_z j3_z) 2)
-                        )
-                    )
-                    (squared_joint_radius)
-                )
-                ;J9&J4 Collision
-                (<= 
-                    (+ 
-                        (^ (- j9_x j4_x) 2)
-                        (+ (^ (- j9_y j4_y) 2)
-                        (^ (- j9_z j4_z) 2)
-                        )
-                    )
-                    (squared_joint_radius)
-                )
-                ;J9&J5 Collision
-                (<= 
-                    (+ 
-                        (^ (- j9_x j5_x) 2)
-                        (+ (^ (- j9_y j5_y) 2)
-                        (^ (- j9_z j5_z) 2)
-                        )
-                    )
-                    (squared_joint_radius)
-                )
-            )
-        )
-        :effect (and
-            ;;Stop any and all movement happening
-            (no_movement)
-            (not (joint_2_moving))
-            (not (joint_3_moving))
-            (not (joint_5_moving))
-            (not (joint_7_moving))
-            (not (joint_8_moving))
-            (not (joint_9_moving))
-            (joint_hit)
-        )
-    )
+    ; (:event joint_collision_j9
+    ;     :parameters ()
+    ;     :precondition (and
+    ;         (not (no_movement))
+    ;         (or
+    ;             ;J9&J1 Collision
+    ;             (<= 
+    ;                 (+ 
+    ;                     (^ (- j9_x j1_x) 2)
+    ;                     (+ (^ (- j9_y j1_y) 2)
+    ;                     (^ (- j9_z j1_z) 2)
+    ;                     )
+    ;                 )
+    ;                 (squared_joint_radius)
+    ;             )
+    ;             ;J9&J2 Collision
+    ;             (<= 
+    ;                 (+ 
+    ;                     (^ (- j9_x j2_x) 2)
+    ;                     (+ (^ (- j9_y j2_y) 2)
+    ;                     (^ (- j9_z j2_z) 2)
+    ;                     )
+    ;                 )
+    ;                 (squared_joint_radius)
+    ;             )
+    ;             ;J9&J3 Collision
+    ;             (<= 
+    ;                 (+ 
+    ;                     (^ (- j9_x j3_x) 2)
+    ;                     (+ (^ (- j9_y j3_y) 2)
+    ;                     (^ (- j9_z j3_z) 2)
+    ;                     )
+    ;                 )
+    ;                 (squared_joint_radius)
+    ;             )
+    ;             ;J9&J4 Collision
+    ;             (<= 
+    ;                 (+ 
+    ;                     (^ (- j9_x j4_x) 2)
+    ;                     (+ (^ (- j9_y j4_y) 2)
+    ;                     (^ (- j9_z j4_z) 2)
+    ;                     )
+    ;                 )
+    ;                 (squared_joint_radius)
+    ;             )
+    ;             ;J9&J5 Collision
+    ;             (<= 
+    ;                 (+ 
+    ;                     (^ (- j9_x j5_x) 2)
+    ;                     (+ (^ (- j9_y j5_y) 2)
+    ;                     (^ (- j9_z j5_z) 2)
+    ;                     )
+    ;                 )
+    ;                 (squared_joint_radius)
+    ;             )
+    ;         )
+    ;     )
+    ;     :effect (and
+    ;         ;;Stop any and all movement happening
+    ;         (no_movement)
+    ;         (not (joint_2_moving))
+    ;         (not (joint_3_moving))
+    ;         (not (joint_5_moving))
+    ;         (not (joint_7_moving))
+    ;         (not (joint_8_moving))
+    ;         (not (joint_9_moving))
+    ;         (joint_hit)
+    ;     )
+    ; )
 
     ;---------------------------- ANGLE RESETS --------------------------------------------
     ;Angle resets are relevant to avoid infinite states

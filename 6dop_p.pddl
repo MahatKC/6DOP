@@ -81,7 +81,7 @@
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (lambda) 12) ;;Acceptable squared error, can be increased
+	(= (lambda) 10.5) ;;Acceptable squared error, can be increased
 	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
 	(no_movement)
 	(= (updating_positions) 0)
@@ -100,9 +100,9 @@
 	(and 
 		;Desired joint must be close to target (closeness determined by lambda)
 		(<= 
-			(+ (^ (- j9_x target_x) 2)
-			   (+ (^ (- j9_y target_y) 2)
-			      (^ (- j9_z target_z) 2)
+			(+ (^ (- j8_x target_x) 2)
+			   (+ (^ (- j8_y target_y) 2)
+			      (^ (- j8_z target_z) 2)
 			   )
 			)
 			(lambda)
