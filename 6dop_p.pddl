@@ -69,23 +69,23 @@
 	(= (l9) 101.14)
 
 	;;Target
-	(= (target_x) 270.64373779296875)
-	(= (target_y) -87.27857971191406)
-	(= (target_z) 122.38709259033203)
+	(= (target_x) 142.42767333984375)
+	(= (target_y) -47.25621032714844)
+	(= (target_z) 159.82217407226562)
 
 	;;Head is modelled as a sphere
-	(= (sphere_center_x) 327.4125045629077)
-	(= (sphere_center_y) -186.3395348633431)
-	(= (sphere_center_z) 27.18249836769442)
+	(= (sphere_center_x) 260.7869451096575)
+	(= (sphere_center_y) 22.37286959031545)
+	(= (sphere_center_z) 105.20429448342482)
 	(= (squared_sphere_radius) 22500.0) ;;r², avoids needing to calculate the square of the radius for every collision check
 	
 	;;Global goal conditions
 	(= (w) 0.0174533) ;;Angular speed of joints in radians, 0.0174533 = 1 degree/sec. This value makes it easy to interpret performed actions
-	(= (lambda)250) ;;Acceptable squared error, can be increased
+	(= (lambda)200) ;;Acceptable squared error, can be increased
 	(= (epsilon) 0.000001) ;;Very small value to be used instead of 0
 	(no_movement)
 	(= (updating_positions) 0)
-	(= (squared_joint_radius) 32)
+	(= (squared_joint_radius) 128)
 
 	;;Sums of lengths to speed up computations
 	(= (l3_l5) 206.4)
@@ -97,37 +97,38 @@
   )
 
   (:goal
-	; (and 
-	; 	;Desired joint must be close to target (closeness determined by lambda)
-	; 	(<= 
-	; 		(+ (^ (- j9_x target_x) 2)
-	; 		   (+ (^ (- j9_y target_y) 2)
-	; 		      (^ (- j9_z target_z) 2)
-	; 		   )
-	; 		)
-	; 		(lambda)
-	; 	)
-	; 	;No movement must be happening (stop action must have been called)
-	; 	(no_movement)
-	; 	;No collision has happened
-	; 	(not (head_hit))
-	; 	(not (floor_hit))
-	; )
+	(and 
+		;Desired joint must be close to target (closeness determined by lambda)
+		(<= 
+			(+ (^ (- j9_x target_x) 2)
+			   (+ (^ (- j9_y target_y) 2)
+			      (^ (- j9_z target_z) 2)
+			   )
+			)
+			(lambda)
+		)
+		;No movement must be happening (stop action must have been called)
+		(no_movement)
+		;No collision has happened
+		(not (head_hit))
+		(not (floor_hit))
+		(not (joint_hit))
+	)
 
     ;####### Auxiliary goals to test different behaviors #######
 	;##### Change goal to specific joint angles
-	(and 
-		(<= (j2_angle) 5.394)
-		(>= (j2_angle) 5.393) 
-		(<= (j3_angle) 0.664)
-		(>= (j3_angle) 0.663)
-		(<= (j5_angle) -0.261)
-		(>= (j5_angle) -0.262)
-		(<= (j7_angle) 0.262)
-		(>= (j7_angle) 0.261)
-		;(>= (j7_angle) 0.0872664625997) ;-45 degrees (-90 + 15 + 30)
-		; (no_movement)
-	)
+	; (and 
+	; 	(<= (j2_angle) 5.394)
+	; 	(>= (j2_angle) 5.393) 
+	; 	(<= (j3_angle) 0.664)
+	; 	(>= (j3_angle) 0.663)
+	; 	(<= (j5_angle) -0.261)
+	; 	(>= (j5_angle) -0.262)
+	; 	(<= (j7_angle) 0.262)
+	; 	(>= (j7_angle) 0.261)
+	; 	;(>= (j7_angle) 0.0872664625997) ;-45 degrees (-90 + 15 + 30)
+	; 	; (no_movement)
+	; )
 
 	;##### Change goal so that the obstacle is hit
 	; (and (head_hit)(no_movement))
